@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #ffffff;
+  --color-cream-soft: #f7f5f2;
+  --color-charcoal: #221710;
+  --color-charcoal-soft: #36251b;
+  --color-orange: #f2541c;
+  --color-orange-dark: #d63f12;
+  --color-orange-light: #ff8a4c;
+  --color-cheese: #ffc93c;
+  --color-tomato: #c1392b;
+  --color-crust: #b9854a;
+
+  --font-display: "Poppins", "Inter", sans-serif;
+  --font-body: "Inter", "Poppins", sans-serif;
+
+  --shadow-warm: 0 20px 45px -15px rgba(214, 63, 18, 0.35);
+  --shadow-warm-lg: 0 30px 70px -20px rgba(214, 63, 18, 0.45);
+  --shadow-soft: 0 10px 30px -12px rgba(34, 23, 16, 0.25);
+
+  --animate-spin-slow: spin 60s linear infinite;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
