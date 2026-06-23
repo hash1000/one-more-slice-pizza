@@ -5,6 +5,6 @@ export const rotatingMessages: string[] = [
   "The slice you finish and still think about.",
 ];
 
-export const MESSAGE_POSITION = "top-[4%] -right-[2%] sm:-right-[10%] lg:-right-[8%]";
+export const MESSAGE_POSITION = "top-0 -right-[15%] sm:-right-[18%] lg:-right-[16%]";
 
 export const MESSAGE_INTERVAL_MS = 4500;

@@ -2,7 +2,7 @@ import type { CravingLine } from "../types";
 
 export const cravingLines: CravingLine[] = [
   {
-    text: "You know you want another slice.",
+    text: "More pizza. More value.",
     size: "text-4xl sm:text-6xl lg:text-7xl",
     align: "text-center lg:text-left",
     color: "text-charcoal/40",

@@ -1,4 +1,4 @@
-import { Hero, Personality, Craving, FinalCTA } from "../components/sections";
+import { Hero, Personality, Craving, BrandValue } from "../components/sections";
 import { useScrollToHash } from "../hooks/useScrollToHash";
 
 export function Home() {
@@ -9,7 +9,7 @@ export function Home() {
       <Hero />
       <Personality />
       <Craving />
-      <FinalCTA />
+      <BrandValue />
     </>
   );
 }

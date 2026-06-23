@@ -3,6 +3,7 @@ import {
   WhyOneMoreSlice,
   IdealLocations,
   BrochureCTA,
+  InterestForm,
 } from "../components/sections/joinUs";
 import { FinalCTA } from "../components/sections";
 import { joinUsFinalCta, brochureHref } from "../constants/joinUs";
@@ -17,6 +18,7 @@ export function JoinUs() {
       <WhyOneMoreSlice />
       <IdealLocations />
       <BrochureCTA />
+      <InterestForm />
       <FinalCTA
         id="join-cta"
         title={joinUsFinalCta.title}
