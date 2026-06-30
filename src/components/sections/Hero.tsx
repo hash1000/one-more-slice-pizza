@@ -35,7 +35,7 @@ export function Hero() {
       ref={sectionRef}
       className="relative flex min-h-[100svh] w-full items-center overflow-hidden bg-white pt-24 pb-14 sm:pt-28 sm:pb-16"
     >
-      <div className={`${containerClasses} grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16`}>
+      <div className={`${containerClasses} bg-blue grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-16`}>
         {/* Mobile: tagline + logo above pizza */}
         <div className="order-1 flex flex-col items-center gap-3 lg:hidden">
           <p className="font-display text-sm font-semibold text-charcoal/50 sm:text-base">
