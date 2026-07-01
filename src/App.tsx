@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { Navbar, Footer } from "./components/layout";
-import { Home, JoinUs, Menu, Locations } from "./pages";
+import { useLocation } from "react-router-dom";
+import { Navbar } from "./components/layout/Navbar";
+import { Footer } from "./components/layout/Footer";
+import { AppRoutes } from "./router";
 
 function App() {
   const { pathname, hash } = useLocation();
@@ -15,12 +16,7 @@ function App() {
       <div className="grain-overlay" />
       <Navbar />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/locations" element={<Locations />} />
-          <Route path="/join-us" element={<JoinUs />} />
-        </Routes>
+        <AppRoutes />
       </main>
       <Footer />
     </div>

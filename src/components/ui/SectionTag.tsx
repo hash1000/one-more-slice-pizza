@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { fadeUp, viewportOnce } from "../../lib/motion";
+import { fadeUp, viewportOnce } from "../../utils/motion";
 
 interface SectionTagProps {
   children: ReactNode;

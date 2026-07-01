@@ -1,5 +1,5 @@
 import type { AnchorHTMLAttributes } from "react";
-import { buttonClasses, type ButtonVariant, type ButtonSize } from "../../lib/buttonStyles";
+import { buttonClasses, type ButtonVariant, type ButtonSize } from "../../utils/buttonStyles";
 
 interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: ButtonVariant;

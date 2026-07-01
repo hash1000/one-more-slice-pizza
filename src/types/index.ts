@@ -3,14 +3,6 @@ export interface NavLink {
   href: string;
 }
 
-export interface WhyUsCardData {
-  highlight: string;
-  title: string;
-  description: string;
-  image: string;
-  alt: string;
-}
-
 export interface CravingLine {
   text: string;
   size: string;

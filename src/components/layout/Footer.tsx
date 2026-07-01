@@ -1,4 +1,4 @@
-import { containerClasses } from "../../lib/layout";
+import { containerClasses } from "../../utils/layout";
 import { Logo } from "../ui/Logo";
 
 export function Footer() {

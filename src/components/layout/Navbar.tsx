@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { navLinks } from "../../constants/navigation";
-import { buttonClasses } from "../../lib/buttonStyles";
-import { containerClasses } from "../../lib/layout";
+import { navLinks } from "../../data/navigation";
+import { buttonClasses } from "../../utils/buttonStyles";
+import { containerClasses } from "../../utils/layout";
 import { Logo } from "../ui/Logo";
 
 export function Navbar() {
@@ -71,18 +71,9 @@ export function Navbar() {
           onClick={() => setOpen((v) => !v)}
           className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-charcoal/15 bg-white/60 md:hidden"
         >
-          <motion.span
-            animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="h-0.5 w-5 rounded-full bg-charcoal"
-          />
-          <motion.span
-            animate={open ? { opacity: 0 } : { opacity: 1 }}
-            className="h-0.5 w-5 rounded-full bg-charcoal"
-          />
-          <motion.span
-            animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="h-0.5 w-5 rounded-full bg-charcoal"
-          />
+          <motion.span animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className="h-0.5 w-5 rounded-full bg-charcoal" />
+          <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} className="h-0.5 w-5 rounded-full bg-charcoal" />
+          <motion.span animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className="h-0.5 w-5 rounded-full bg-charcoal" />
         </button>
       </nav>
 
