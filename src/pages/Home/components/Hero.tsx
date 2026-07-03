@@ -1,14 +1,17 @@
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import pizza from "../../../assets/images/hero/pizza-hero.jpg";
-import { Logo } from "../../../components/ui/Logo";
+import { motion, useScroll, useTransform, useReducedMotion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import pizza from "../../../assets/images/hero/hero-pizza.jpeg";
 import { useInterval } from "../../../hooks/useInterval";
 import { containerClasses } from "../../../utils/layout";
+import { buttonClasses } from "../../../utils/buttonStyles";
 import { rotatingMessages, MESSAGE_POSITION, MESSAGE_INTERVAL_MS } from "../../../data/hero";
 
 export function Hero() {
+  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useInterval(() => {
     setIndex((i) => (i + 1) % rotatingMessages.length);
@@ -28,24 +31,42 @@ export function Hero() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative flex min-h-[100svh] w-full items-center overflow-hidden bg-white pt-24 pb-14 sm:pt-28 sm:pb-16"
+      className="relative flex w-full items-center overflow-hidden bg-[#FAF7F2] pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pb-20 min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-72px)]"
     >
-      <div className={`${containerClasses} grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1.25fr] lg:gap-8`}>
-        {/* Mobile: logo above pizza */}
-        <div className="order-1 flex justify-center lg:hidden">
-          <Logo variant="plain" className="mx-auto h-32 w-auto sm:h-36" />
-        </div>
+      {/* decorative: oversized outlined circle, left background, barely visible */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-1/2 -z-10 h-[36rem] w-[36rem] -translate-y-1/2 rounded-full border border-charcoal/[0.06] sm:-left-56 sm:h-[44rem] sm:w-[44rem]"
+      />
 
+      {/* decorative: warm radial glow behind the pizza */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[6%] top-1/2 -z-10 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-orange/[0.08] blur-[110px] sm:h-[700px] sm:w-[700px] lg:h-[850px] lg:w-[850px]"
+      />
+
+      {/* decorative: soft fade into the dark section below */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-b from-transparent to-charcoal/[0.04]"
+      />
+
+      <div className={`${containerClasses} grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-10`}>
         {/* Left: copy */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative z-10 order-3 text-center lg:order-1 lg:text-left"
+          className="relative z-10 order-2 text-center lg:order-1 lg:text-left"
         >
-          <Logo variant="plain" className="hidden lg:block lg:h-56 xl:h-64" />
+          <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-orange sm:text-sm">
+            One More Slice Pizza
+          </p>
 
-          <h1 className="mt-6 font-display text-2xl font-black leading-tight tracking-tight text-charcoal sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl">
+          <h1
+            className="mt-3 font-display font-black tracking-tight text-charcoal"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", lineHeight: 1.05 }}
+          >
             Big Slices.{" "}
             <span className="relative inline-block whitespace-nowrap text-orange">
               Big Value.
@@ -61,20 +82,40 @@ export function Hero() {
             </span>
             {" "}Big Flavor.
           </h1>
+
+          <p className="mx-auto mt-5 max-w-[60ch] text-base text-charcoal/60 lg:mx-0">
+            Fresh, oven-hot pizza with slices twice the size. Made throughout the day, every day.
+          </p>
+
+          <button onClick={() => navigate("/menu")} className={`mt-8 ${buttonClasses("dark", "md")}`}>
+            See the Slice
+          </button>
         </motion.div>
 
         {/* Right: rotating pizza */}
-        <div className="relative order-2 mx-auto flex aspect-square w-full max-w-[20rem] items-center justify-center sm:max-w-[26rem] lg:order-2 lg:max-w-[36rem] xl:max-w-[42rem]">
-          <div className="absolute bottom-[6%] h-10 w-[70%] rounded-full bg-charcoal/20 blur-2xl" />
+        <div className="relative order-1 mx-auto flex aspect-square w-full max-w-[16rem] items-center justify-center sm:max-w-[22rem] lg:order-2 lg:max-w-[30rem] xl:max-w-[34rem]">
+          {/* decorative: soft realistic drop shadow grounding the pizza */}
+          <div className="absolute bottom-[4%] h-10 w-[70%] rounded-full bg-charcoal-soft/25 blur-2xl" />
 
           <motion.div
             style={{ rotate: scrollRotate, y: scrollY, scale: scrollScale, opacity: scrollOpacity }}
             className="relative h-full w-full"
           >
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 70, ease: "linear", repeat: Infinity }}
-              className="relative h-full w-full"
+              animate={
+                prefersReducedMotion
+                  ? undefined
+                  : { y: [0, -10, 0], rotate: 360 }
+              }
+              transition={
+                prefersReducedMotion
+                  ? undefined
+                  : {
+                      y: { duration: 6, ease: "easeInOut", repeat: Infinity },
+                      rotate: { duration: 120, ease: "linear", repeat: Infinity },
+                    }
+              }
+              className="relative h-full w-full p-8 sm:p-12 lg:p-16"
             >
               <img
                 src={pizza}
@@ -85,7 +126,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Orbiting brand message */}
+          {/* Orbiting brand message, overlapping the pizza's edge */}
           <div className="absolute inset-0 hidden sm:block">
             <AnimatePresence mode="wait">
               <motion.div
@@ -94,7 +135,7 @@ export function Hero() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.85, y: -8 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className={`absolute z-20 max-w-[10.5rem] rounded-2xl border border-charcoal/5 bg-white/90 px-4 py-3 text-center font-display text-sm font-bold leading-snug text-charcoal shadow-soft backdrop-blur-sm sm:max-w-[11rem] ${MESSAGE_POSITION}`}
+                className={`absolute z-20 max-w-[9.5rem] rounded-2xl border border-charcoal/5 bg-white/90 px-3.5 py-2.5 text-center font-display text-xs font-bold leading-snug text-charcoal shadow-soft backdrop-blur-sm sm:max-w-[10rem] ${MESSAGE_POSITION}`}
               >
                 {rotatingMessages[index]}
               </motion.div>
@@ -102,8 +143,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Mobile: cycling message */}
-        <div className="relative order-4 -mt-2 flex justify-center sm:hidden">
+        {/* Mobile: cycling message, below the pizza */}
+        <div className="relative order-3 mt-1 flex justify-center sm:hidden">
           <AnimatePresence mode="wait">
             <motion.p
               key={index}

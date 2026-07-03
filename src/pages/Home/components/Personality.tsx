@@ -16,7 +16,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
         {content.map((word, i) => (
           <span
             key={`${word}-${i}`}
-            className="flex items-center gap-8 font-display text-5xl font-black uppercase tracking-tight text-cream/15 sm:text-7xl"
+            className="flex items-center gap-8 font-display text-4xl font-black uppercase tracking-tight text-cream/15 sm:text-5xl md:text-6xl lg:text-7xl"
           >
             {word}
             <span className="h-2.5 w-2.5 rounded-full bg-orange/60" aria-hidden="true" />

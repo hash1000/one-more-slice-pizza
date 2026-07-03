@@ -1,18 +1,34 @@
 import { motion } from "framer-motion";
 import { fadeUp, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
-import morePizza from "../../../assets/images/why-it-works/more-pizza.jpg";
-import moreValue from "../../../assets/images/why-it-works/more-value.jpg";
 
-interface Stat {
-  value: string;
-  label: string;
+interface Differentiator {
+  headline: string;
+  body: string;
+  stats: { value: string; label: string }[];
 }
 
-const stats: Stat[] = [
-  { value: "Real Ingredients", label: "No shortcuts, no mystery" },
-  { value: "Generous Portions", label: "Every order, every time" },
-  { value: "Everyday Value", label: "Pizza you can actually afford to love" },
+const differentiators: Differentiator[] = [
+  {
+    headline: "Bigger Slices. Fewer Cuts.",
+    body:
+      "Every 14-inch pizza is cut into 6 large slices — not the usual 8 small ones. Same pizza, bigger bite.",
+    stats: [
+      { value: "14\"", label: "pizza" },
+      { value: "6", label: "big slices" },
+      { value: "8", label: "the usual" },
+    ],
+  },
+  {
+    headline: "One Craving? Try Them All.",
+    body:
+      "Don't commit to one flavor. Mix and match slices from different pizzas and build your own combo — every slice can be a different pizza.",
+    stats: [],
+  },
+];
+
+const secondaryPoints = [
+  { value: "Fresh Daily", label: "Dough and toppings, made same-day" },
 ];
 
 export function BrandValue() {
@@ -21,80 +37,109 @@ export function BrandValue() {
       <div className="pointer-events-none absolute -top-32 -right-32 -z-10 h-[28rem] w-[28rem] rounded-full bg-orange/8 blur-[120px]" />
 
       <div className={containerClasses}>
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 lg:items-center">
-          <div>
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              variants={fadeUp}
-              transition={{ duration: 0.5 }}
-              className="font-display text-xs font-bold uppercase tracking-widest text-orange"
-            >
-              Why One More Slice
-            </motion.p>
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              variants={fadeUp}
-              transition={{ duration: 0.6, delay: 0.05 }}
-              className="mt-3 font-display text-4xl font-black leading-tight tracking-tight text-charcoal text-balance sm:text-5xl"
-            >
-              Quality you can taste.{" "}
-              <span className="text-orange">Value you'll remember.</span>
-            </motion.h2>
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              variants={fadeUp}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mt-6 font-body text-lg leading-relaxed text-charcoal/70"
-            >
-              One More Slice is built on a simple idea: great pizza shouldn't come with compromises.
-              Fresh dough, real toppings, portions that actually fill you up — at a price that makes
-              coming back easy.
-            </motion.p>
-            <motion.ul
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              variants={fadeUp}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-10 flex flex-col gap-5"
-            >
-              {stats.map((stat) => (
-                <li key={stat.value} className="flex items-start gap-4">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange">
-                    <svg className="h-3 w-3 text-white" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <div>
-                    <p className="font-display text-base font-bold text-charcoal">{stat.value}</p>
-                    <p className="mt-0.5 font-body text-sm text-charcoal/60">{stat.label}</p>
-                  </div>
-                </li>
-              ))}
-            </motion.ul>
-          </div>
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          transition={{ duration: 0.5 }}
+          className="text-center font-display text-xs font-bold uppercase tracking-widest text-orange"
+        >
+          Why One More Slice
+        </motion.p>
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.05 }}
+          className="mt-3 text-center font-display text-4xl font-black leading-tight tracking-tight text-charcoal text-balance sm:text-5xl"
+        >
+          Two reasons you'll <span className="text-orange">keep coming back.</span>
+        </motion.h2>
 
+        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {/* Differentiator 1: Bigger Slices */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={viewportOnce}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="relative hidden lg:block"
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+            className="rounded-3xl bg-white p-8 shadow-warm sm:p-10"
           >
-            <div className="grid grid-cols-2 gap-4">
-              <img src={morePizza} alt="Generous pizza slices" className="h-64 w-full rounded-2xl object-cover shadow-warm" />
-              <img src={moreValue} alt="Fresh quality ingredients" className="mt-10 h-64 w-full rounded-2xl object-cover shadow-warm" />
+            <h3 className="font-display text-2xl font-black text-charcoal sm:text-3xl">
+              {differentiators[0].headline}
+            </h3>
+            <p className="mt-4 font-body text-base leading-relaxed text-charcoal/70 sm:text-lg">
+              {differentiators[0].body}
+            </p>
+            <div className="mt-8 flex items-end gap-6 sm:gap-8">
+              {differentiators[0].stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="font-display text-5xl font-black text-orange sm:text-6xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 font-body text-xs font-semibold uppercase tracking-wide text-charcoal/60">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl bg-orange/15 -z-10" />
-            <div className="absolute -top-4 -right-4 h-16 w-16 rounded-full bg-cheese/30 -z-10" />
+          </motion.div>
+
+          {/* Differentiator 2: Mix & Match */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="rounded-3xl bg-charcoal p-8 shadow-warm sm:p-10"
+          >
+            <h3 className="font-display text-2xl font-black text-white sm:text-3xl">
+              {differentiators[1].headline}
+            </h3>
+            <p className="mt-4 font-body text-base leading-relaxed text-white/70 sm:text-lg">
+              {differentiators[1].body}
+            </p>
+            <div className="mt-8 flex items-center gap-3" aria-hidden="true">
+              {["bg-orange", "bg-cheese", "bg-orange/60", "bg-cheese/60"].map((color, i) => (
+                <span
+                  key={i}
+                  className={`h-12 w-12 rounded-full border-4 border-charcoal ${color}`}
+                  style={{ clipPath: "polygon(50% 50%, 0 0, 100% 0)" }}
+                />
+              ))}
+            </div>
+            <p className="mt-3 font-body text-xs font-semibold uppercase tracking-wide text-white/50">
+              Every slice, a different pizza
+            </p>
           </motion.div>
         </div>
+
+        {/* Secondary points */}
+        <motion.ul
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3"
+        >
+          {secondaryPoints.map((point) => (
+            <li key={point.value} className="flex items-center gap-2">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange">
+                <svg className="h-3 w-3 text-white" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <p className="font-body text-sm text-charcoal/60">
+                <span className="font-semibold text-charcoal">{point.value}</span> — {point.label}
+              </p>
+            </li>
+          ))}
+        </motion.ul>
       </div>
     </section>
   );

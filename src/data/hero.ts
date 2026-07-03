@@ -1,7 +1,7 @@
 export const rotatingMessages: string[] = [
   "Larger slices. Bigger satisfaction.",
   "Fresh pizza prepared throughout the day.",
-  "Generous portions that feel worth it.",
+  "Actual Size: 2x Bigger Than A Normal Slice",
   "The slice you finish and still think about.",
 ];
 

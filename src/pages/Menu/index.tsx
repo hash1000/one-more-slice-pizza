@@ -17,7 +17,12 @@ export function Menu() {
       <MenuHero />
       <CategoryTabs activeId={activeId} onSelect={handleSelect} />
       {menuCategories.map((category, i) => (
-        <MenuCategorySection key={category.id} category={category} isFirst={i === 0} />
+        <MenuCategorySection
+          key={category.id}
+          category={category}
+          isFirst={i === 0}
+          isDark={i === 2}
+        />
       ))}
       <MenuCTA />
     </div>

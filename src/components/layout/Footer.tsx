@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { containerClasses } from "../../utils/layout";
 import { Logo } from "../ui/Logo";
 
@@ -9,6 +10,12 @@ export function Footer() {
         <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-cream/50">
           Every slice leaves you wanting one more.
         </p>
+        <Link
+          to="/about"
+          className="font-display text-sm font-semibold uppercase tracking-wide text-cream/60 transition-colors hover:text-orange"
+        >
+          About Us
+        </Link>
         <p className="font-body text-sm text-cream/40">
           &copy; {new Date().getFullYear()} One More Slice Pizza. All rights reserved.
         </p>
