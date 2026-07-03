@@ -1,5 +1,10 @@
 import type { BusinessType } from "../../services/partnerApi";
 
+export interface LocationEntry {
+  city: string;
+  state: string;
+}
+
 export interface PartnerFormState {
   businessType: BusinessType | "";
   locationsCount: string;
@@ -10,10 +15,13 @@ export interface PartnerFormState {
   phone: string;
   city: string;
   state: string;
+  additionalLocations: LocationEntry[];
   hearAboutUs: string;
   comments: string;
   honeypot: string;
 }
+
+export const emptyLocationEntry: LocationEntry = { city: "", state: "" };
 
 export const initialFormState: PartnerFormState = {
   businessType: "",
@@ -25,6 +33,7 @@ export const initialFormState: PartnerFormState = {
   phone: "",
   city: "",
   state: "",
+  additionalLocations: [],
   hearAboutUs: "",
   comments: "",
   honeypot: "",

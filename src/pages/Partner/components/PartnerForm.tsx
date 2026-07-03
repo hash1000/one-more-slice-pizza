@@ -65,6 +65,10 @@ export function PartnerForm() {
         phone: formData.phone,
         city: formData.city,
         state: formData.state,
+        additionalLocations:
+          formData.additionalLocations.length > 0
+            ? formData.additionalLocations.filter((loc) => loc.city.trim() || loc.state.trim())
+            : undefined,
         businessType: formData.businessType,
         locationsCount: formData.locationsCount || undefined,
         hearAboutUs: formData.hearAboutUs || undefined,

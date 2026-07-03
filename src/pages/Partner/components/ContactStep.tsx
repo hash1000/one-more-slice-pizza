@@ -1,5 +1,11 @@
 import { buttonClasses } from "../../../utils/buttonStyles";
-import { hearAboutUsOptions, usStates, type ContactFormErrors, type PartnerFormState } from "../types";
+import {
+  emptyLocationEntry,
+  hearAboutUsOptions,
+  usStates,
+  type ContactFormErrors,
+  type PartnerFormState,
+} from "../types";
 
 interface ContactStepProps {
   formData: PartnerFormState;
@@ -222,6 +228,71 @@ export function ContactStep({
           </div>
         </div>
 
+        {formData.businessType === "own_multiple_locations" && (
+          <div>
+            <label className="mb-2 block font-display text-sm font-semibold text-charcoal">
+              Additional Locations
+            </label>
+            <p className="mb-3 font-body text-xs text-charcoal/50">
+              Add each additional city/state where you operate a location.
+            </p>
+            <div className="flex flex-col gap-3">
+              {formData.additionalLocations.map((location, index) => (
+                <div key={index} className="grid gap-3 sm:grid-cols-[1fr_1fr_auto]">
+                  <input
+                    type="text"
+                    placeholder="City"
+                    autoComplete="address-level2"
+                    value={location.city}
+                    onChange={(e) => {
+                      const next = [...formData.additionalLocations];
+                      next[index] = { ...next[index], city: e.target.value };
+                      onChange("additionalLocations", next);
+                    }}
+                    className={fieldClasses(false)}
+                  />
+                  <select
+                    value={location.state}
+                    onChange={(e) => {
+                      const next = [...formData.additionalLocations];
+                      next[index] = { ...next[index], state: e.target.value };
+                      onChange("additionalLocations", next);
+                    }}
+                    className={fieldClasses(false)}
+                  >
+                    <option value="">Select State</option>
+                    {usStates.map((state) => (
+                      <option key={state} value={state}>
+                        {state}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const next = formData.additionalLocations.filter((_, i) => i !== index);
+                      onChange("additionalLocations", next);
+                    }}
+                    aria-label="Remove location"
+                    className="cursor-pointer rounded-xl border border-charcoal/15 px-4 py-3 font-body text-sm text-charcoal/60 transition-colors hover:border-tomato/40 hover:text-tomato"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                onChange("additionalLocations", [...formData.additionalLocations, { ...emptyLocationEntry }])
+              }
+              className="mt-3 cursor-pointer font-body text-sm font-semibold text-orange underline-offset-2 hover:underline"
+            >
+              + Add another location
+            </button>
+          </div>
+        )}
+
         <div>
           <label htmlFor="hearAboutUs" className="mb-2 block font-display text-sm font-semibold text-charcoal">
             How Did You Hear About Us?
@@ -275,7 +346,7 @@ export function ContactStep({
           type="button"
           onClick={onBack}
           disabled={submitting}
-          className="font-body text-sm font-semibold text-charcoal/60 underline-offset-2 hover:underline disabled:cursor-not-allowed"
+          className="cursor-pointer font-body text-sm font-semibold text-charcoal/60 underline-offset-2 hover:underline disabled:cursor-not-allowed"
         >
           Back
         </button>

@@ -1,6 +1,5 @@
 import { useMemo, useRef } from "react";
 import { motion, useReducedMotion, useInView } from "framer-motion";
-
 import pizzaPhoto from "../assets/images/hero/hero-pizza.jpeg";
 
 // ---- Tunable constants -----------------------------------------------------

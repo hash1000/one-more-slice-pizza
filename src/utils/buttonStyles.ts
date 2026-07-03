@@ -21,5 +21,5 @@ export function buttonClasses(
   size: ButtonSize = "md",
   className = ""
 ) {
-  return `inline-block rounded-full text-center font-display font-bold uppercase tracking-wide transition-all duration-300 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+  return `inline-block cursor-pointer rounded-full text-center font-display font-bold uppercase tracking-wide transition-all duration-300 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 }

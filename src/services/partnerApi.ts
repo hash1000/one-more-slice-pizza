@@ -6,6 +6,11 @@ export type BusinessType =
   | "investor"
   | "other";
 
+export interface LocationEntryPayload {
+  city: string;
+  state: string;
+}
+
 export interface PartnerInquiryPayload {
   firstName: string;
   lastName: string;
@@ -14,6 +19,7 @@ export interface PartnerInquiryPayload {
   phone: string;
   city: string;
   state: string;
+  additionalLocations?: LocationEntryPayload[];
   businessType: BusinessType;
   locationsCount?: string;
   hearAboutUs?: string;
