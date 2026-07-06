@@ -14,7 +14,7 @@ export function JoinUs() {
 
   return (
     <>
-      <JoinUsHero />
+      {/* <JoinUsHero /> */}
       <WhyOneMoreSlice />
       <IdealLocations />
       <BrochureCTA />

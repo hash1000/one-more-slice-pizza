@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { HiOutlineBuildingStorefront, HiOutlineSquares2X2 } from "react-icons/hi2";
 import { fadeUp, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 import { buttonClasses } from "../../../utils/buttonStyles";
@@ -8,6 +9,7 @@ interface OptionCard {
   tag: string;
   body: string;
   idealFor: string[];
+  icon: typeof HiOutlineBuildingStorefront;
 }
 
 const options: OptionCard[] = [
@@ -16,6 +18,7 @@ const options: OptionCard[] = [
     tag: "Franchise",
     body: "Build your own pizza business with our complete system, training, and ongoing support.",
     idealFor: ["Entrepreneurs", "Multi-Unit Operators", "Restaurant Investors"],
+    icon: HiOutlineBuildingStorefront,
   },
   {
     title: "Add One More Slice to Your Existing Business",
@@ -28,6 +31,7 @@ const options: OptionCard[] = [
       "Colleges & Universities",
       "And More",
     ],
+    icon: HiOutlineSquares2X2,
   },
 ];
 
@@ -36,7 +40,9 @@ export function PartnerOptions() {
     <section className="bg-cream py-20 sm:py-28">
       <div className={containerClasses}>
         <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2">
-          {options.map((option, index) => (
+          {options.map((option, index) => {
+            const Icon = option.icon;
+            return (
             <motion.div
               key={option.title}
               initial="hidden"
@@ -46,7 +52,10 @@ export function PartnerOptions() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="flex flex-col rounded-2xl border border-charcoal/8 bg-white p-8 shadow-soft"
             >
-              <span className="font-display text-xs font-bold uppercase tracking-widest text-orange">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange/10 text-orange">
+                <Icon className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <span className="mt-4 font-display text-xs font-bold uppercase tracking-widest text-orange">
                 {option.tag}
               </span>
               <h2 className="mt-3 font-display text-2xl font-black uppercase leading-tight text-charcoal">
@@ -72,7 +81,8 @@ export function PartnerOptions() {
                 ))}
               </ul>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
         <div className="mt-12 text-center">
           <a
