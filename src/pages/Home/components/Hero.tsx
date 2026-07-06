@@ -1,13 +1,51 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import heroSlice from "../../../assets/images/hero/hero-slice.png";
-import heroBigSlice from "../../../assets/images/hero/hero-big-slice.png";
+import heroBigSlice from "../../../assets/images/hero/hero-big-slice.svg";
+import heroCircle from "../../../assets/images/hero/circle.svg";
+import heroBadge from "../../../assets/images/hero/badge.svg";
 import icon1 from "../../../assets/images/hero/icon1.png";
 import icon2 from "../../../assets/images/hero/icon2.png";
 import icon3 from "../../../assets/images/hero/icon3.png";
 import icon4 from "../../../assets/images/hero/icon4.png";
 import { containerClasses } from "../../../utils/layout";
 import { buttonClasses } from "../../../utils/buttonStyles";
+
+// To add/remove slices, just add/remove entries here (and drop the matching
+// file into src/assets/slices/). The slider cycles through them in order.
+import sliceBbqChicken from "../../../assets/slices/BBQ Chicken.png";
+import sliceBuffaloRanch from "../../../assets/slices/Buffalo Ranch.png";
+import sliceCaramelApple from "../../../assets/slices/Caramel Apple Sweet.png";
+import sliceCheese from "../../../assets/slices/Cheese.png";
+import sliceChickenSupreme from "../../../assets/slices/Chicken Supreme.png";
+import sliceChocolateBliss from "../../../assets/slices/Chocolate Bliss Sweet.png";
+import sliceChurroSupreme from "../../../assets/slices/Churro Supreme Sweet.png";
+import sliceEggBacon from "../../../assets/slices/Egg n Bacon.png";
+import sliceEggCheese from "../../../assets/slices/Egg n Cheese.png";
+import sliceEggSausage from "../../../assets/slices/Egg n Sausage.png";
+import sliceMeatLover from "../../../assets/slices/Meat Lover.png";
+import slicePepperoni from "../../../assets/slices/Pepperoni.png";
+import sliceSausage from "../../../assets/slices/Sausage.png";
+import sliceVeggie from "../../../assets/slices/Veggie.png";
+
+const slices = [
+  slicePepperoni,
+  sliceBbqChicken,
+  sliceBuffaloRanch,
+  sliceChickenSupreme,
+  sliceMeatLover,
+  sliceSausage,
+  sliceVeggie,
+  sliceCheese,
+  sliceEggBacon,
+  sliceEggCheese,
+  sliceEggSausage,
+  sliceCaramelApple,
+  sliceChocolateBliss,
+  sliceChurroSupreme,
+];
+
+const SLICE_INTERVAL_MS = 3200;
 
 const features = [
   {
@@ -34,6 +72,15 @@ const features = [
 
 export function Hero() {
   const navigate = useNavigate();
+  const [activeSlice, setActiveSlice] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveSlice((prev) => (prev + 1) % slices.length);
+    }, SLICE_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <section
@@ -41,7 +88,7 @@ export function Hero() {
       className="relative w-full overflow-hidden bg-[#FAF7F2] pt-28 pb-16 sm:pt-32 lg:pb-20"
     >
       <div
-        className={`${containerClasses} grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-8`}
+        className={`${containerClasses} grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-8 pt-8 pb-16 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24`}
       >
         {/* Left: copy */}
         <motion.div
@@ -50,12 +97,13 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative z-10 text-center lg:text-left"
         >
-          <img
+          
+          <div className="ml-[3rem] lg:ml-[6rem]">
+            <img
             src={heroBigSlice}
             alt="Our Promise Is Simple: Big Slice"
-            className="mx-auto w-full max-w-[39rem] lg:mx-0"
+            className="mx-auto w-full max-w-[30rem] lg:mx-0"
           />
-          <div className="ml-[3rem] lg:ml-[6rem]">
             <p className="mt-5 font-display text-2xl font-bold uppercase tracking-wide text-charcoal sm:text-3xl">
               More Pizza. More Satisfaction.
             </p>
@@ -110,9 +158,47 @@ export function Hero() {
           className="relative mx-auto mt-6 flex w-full max-w-[26rem] items-center justify-center sm:max-w-[32rem] lg:mt-0 lg:max-w-[40rem]"
         >
           <img
-            src={heroSlice}
-            alt="A big slice of One More Slice pepperoni pizza"
-            className="h-full w-full object-contain"
+            src={heroCircle}
+            alt=""
+            aria-hidden="true"
+            className="h-[75%] w-[75%]"
+          />
+
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <AnimatePresence mode="popLayout">
+              <motion.img
+                key={activeSlice}
+                src={slices[activeSlice]}
+                alt="A big slice of One More Slice pizza"
+                initial={{ opacity: 0, scale: 0.9, rotate: -20 }}
+                animate={{
+                  opacity: 1,
+                  scale: [0.9, 1.06, 0.97, 1.02, 1],
+                  rotate: [-20, -12, -14.5, -11.5, -12],
+                }}
+                exit={{ opacity: 0, scale: 0.9, rotate: -4 }}
+                transition={{
+                  opacity: { duration: 0.4, ease: "easeOut" },
+                  scale: {
+                    duration: 0.9,
+                    ease: [0.34, 1.56, 0.64, 1],
+                    times: [0, 0.45, 0.68, 0.86, 1],
+                  },
+                  rotate: {
+                    duration: 0.9,
+                    ease: [0.34, 1.56, 0.64, 1],
+                    times: [0, 0.45, 0.68, 0.86, 1],
+                  },
+                }}
+                className="absolute h-[100%] w-[100%] object-contain"
+              />
+            </AnimatePresence>
+          </div>
+
+          <img
+            src={heroBadge}
+            alt="Big size, made to satisfy"
+            className="pointer-events-none absolute bottom-[1%] -right-[1%] w-[45%] max-w-[16rem]"
           />
         </motion.div>
       </div>

@@ -90,9 +90,9 @@ export function MenuCategorySection({ category, isFirst, isDark }: MenuCategoryS
                 />
                 <div>
                   <p className={`font-display text-lg font-bold ${nameColor}`}>{item.name}</p>
-                  <p className={`mt-1 max-w-xs font-body text-sm ${ingredientColor}`}>{item.ingredients}</p>
+                  <p className={`mt-1 line-clamp-2 max-w-xs font-body text-sm ${ingredientColor}`}>{item.ingredients}</p>
                   <p className="mt-3 inline-block rounded-full bg-orange px-3 py-1 font-display text-lg font-black text-cream shadow-warm">
-                    $X.XX
+                    {item.price}
                   </p>
                 </div>
               </div>
@@ -113,9 +113,9 @@ export function MenuCategorySection({ category, isFirst, isDark }: MenuCategoryS
                   draggable={false}
                 />
                 <p className={`mt-4 font-display text-base font-bold ${nameColor}`}>{item.name}</p>
-                <p className={`mt-1 font-body text-sm leading-snug ${ingredientColor}`}>{item.ingredients}</p>
+                <p className={`mt-1 line-clamp-2 font-body text-sm leading-snug ${ingredientColor}`}>{item.ingredients}</p>
                 <p className="mt-3 inline-block rounded-full bg-orange px-3 py-1 font-display text-base font-black text-cream shadow-warm">
-                  $X.XX
+                  {item.price}
                 </p>
               </div>
             ))}

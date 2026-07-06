@@ -17,7 +17,7 @@ export function CategoryTabs({ activeId, onSelect }: CategoryTabsProps) {
             <button
               key={cat.id}
               onClick={() => onSelect(cat.id)}
-              className={`relative shrink-0 whitespace-nowrap py-4 font-display text-xs font-bold uppercase tracking-widest transition-colors sm:text-sm ${
+              className={`relative shrink-0 cursor-pointer whitespace-nowrap py-4 font-display text-xs font-bold uppercase tracking-widest transition-colors sm:text-sm ${
                 isActive ? "text-orange" : "text-charcoal/55 hover:text-charcoal"
               }`}
             >

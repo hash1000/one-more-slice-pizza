@@ -113,7 +113,7 @@ export function InterestForm() {
                   <p className="mt-2 font-body text-base text-charcoal/65">We'll be in touch soon with updates on our opening.</p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 font-display text-sm font-semibold text-orange underline-offset-2 hover:underline"
+                    className="mt-6 cursor-pointer font-display text-sm font-semibold text-orange underline-offset-2 hover:underline"
                   >
                     Submit another response
                   </button>
@@ -170,7 +170,7 @@ export function InterestForm() {
                     />
                     {errors.email && <p id="email-error" role="alert" className="mt-1.5 font-body text-xs text-tomato">{errors.email}</p>}
                   </div>
-                  <button type="submit" className="mt-2 w-full rounded-xl bg-orange px-6 py-3.5 font-display text-base font-bold text-white transition-opacity hover:opacity-90 active:scale-[0.98]">
+                  <button type="submit" className="mt-2 w-full cursor-pointer rounded-xl bg-orange px-6 py-3.5 font-display text-base font-bold text-white transition-opacity hover:opacity-90 active:scale-[0.98]">
                     Submit Interest
                   </button>
                   <p className="text-center font-body text-xs text-charcoal/40">

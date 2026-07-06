@@ -5,7 +5,7 @@ import { containerClasses } from "../../../utils/layout";
 
 export function OurStory() {
   return (
-    <section className="relative overflow-hidden bg-[#FAF6F0] pt-20 sm:pt-24 lg:min-h-[85vh] lg:pt-0">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF7EC] via-[#FAF6F0] to-[#FCEEDD] pt-20 sm:pt-24 lg:min-h-[85vh] lg:pt-0">
       <div
         className={`${containerClasses} grid grid-cols-1 items-center gap-12 py-12 sm:py-16 lg:min-h-[85vh] lg:grid-cols-2 lg:gap-16 lg:py-24`}
       >

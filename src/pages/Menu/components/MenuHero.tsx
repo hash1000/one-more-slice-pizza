@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
-import heroPizza from "../../../assets/images/menu/signature/meat-lovers.png";
+import heroPizza from "../../../assets/images/menu/signature/meat-lover.png";
 
 export function MenuHero() {
   return (

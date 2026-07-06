@@ -4,7 +4,7 @@ import { containerClasses } from "../../../utils/layout";
 
 export function FreshFastFlavorful() {
   return (
-    <section className="relative overflow-hidden bg-cream-soft py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-cream-soft via-[#FBEEDF] to-[#F8E4CB] py-16 sm:py-20">
       <div className={containerClasses}>
         <motion.div
           initial="hidden"
