@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { PizzaSliceAnimation } from "../../../components/PizzaSliceAnimation";
 import { useNavigate } from "react-router-dom";
@@ -13,39 +12,39 @@ import { fadeUp, viewportOnce } from "../../../utils/motion";
 
 // To add/remove slices, just add/remove entries here (and drop the matching
 // file into src/assets/slices/). The slider cycles through them in order.
-import sliceBbqChicken from "../../../assets/slices/BBQ Chicken.png";
-import sliceBuffaloRanch from "../../../assets/slices/Buffalo Ranch.png";
-import sliceCaramelApple from "../../../assets/slices/Caramel Apple Sweet.png";
-import sliceCheese from "../../../assets/slices/Cheese.png";
-import sliceChickenSupreme from "../../../assets/slices/Chicken Supreme.png";
-import sliceChocolateBliss from "../../../assets/slices/Chocolate Bliss Sweet.png";
-import sliceChurroSupreme from "../../../assets/slices/Churro Supreme Sweet.png";
-import sliceEggBacon from "../../../assets/slices/Egg n Bacon.png";
-import sliceEggCheese from "../../../assets/slices/Egg n Cheese.png";
-import sliceEggSausage from "../../../assets/slices/Egg n Sausage.png";
-import sliceMeatLover from "../../../assets/slices/Meat Lover.png";
-import slicePepperoni from "../../../assets/slices/Pepperoni.png";
-import sliceSausage from "../../../assets/slices/Sausage.png";
-import sliceVeggie from "../../../assets/slices/Veggie.png";
+// import sliceBbqChicken from "../../../assets/slices/BBQ Chicken.png";
+// import sliceBuffaloRanch from "../../../assets/slices/Buffalo Ranch.png";
+// import sliceCaramelApple from "../../../assets/slices/Caramel Apple Sweet.png";
+// import sliceCheese from "../../../assets/slices/Cheese.png";
+// import sliceChickenSupreme from "../../../assets/slices/Chicken Supreme.png";
+// import sliceChocolateBliss from "../../../assets/slices/Chocolate Bliss Sweet.png";
+// import sliceChurroSupreme from "../../../assets/slices/Churro Supreme Sweet.png";
+// import sliceEggBacon from "../../../assets/slices/Egg n Bacon.png";
+// import sliceEggCheese from "../../../assets/slices/Egg n Cheese.png";
+// import sliceEggSausage from "../../../assets/slices/Egg n Sausage.png";
+// import sliceMeatLover from "../../../assets/slices/Meat Lover.png";
+// import slicePepperoni from "../../../assets/slices/Pepperoni.png";
+// import sliceSausage from "../../../assets/slices/Sausage.png";
+// import sliceVeggie from "../../../assets/slices/Veggie.png";
 
-const slices = [
-  slicePepperoni,
-  sliceBbqChicken,
-  sliceBuffaloRanch,
-  sliceChickenSupreme,
-  sliceMeatLover,
-  sliceSausage,
-  sliceVeggie,
-  sliceCheese,
-  sliceEggBacon,
-  sliceEggCheese,
-  sliceEggSausage,
-  sliceCaramelApple,
-  sliceChocolateBliss,
-  sliceChurroSupreme,
-];
+// const slices = [
+//   slicePepperoni,
+//   sliceBbqChicken,
+//   sliceBuffaloRanch,
+//   sliceChickenSupreme,
+//   sliceMeatLover,
+//   sliceSausage,
+//   sliceVeggie,
+//   sliceCheese,
+//   sliceEggBacon,
+//   sliceEggCheese,
+//   sliceEggSausage,
+//   sliceCaramelApple,
+//   sliceChocolateBliss,
+//   sliceChurroSupreme,
+// ];
 
-const SLICE_INTERVAL_MS = 3200;
+// const SLICE_INTERVAL_MS = 3200;
 
 const features = [
   {
@@ -72,15 +71,15 @@ const features = [
 
 export function Hero() {
   const navigate = useNavigate();
-  const [activeSlice, setActiveSlice] = useState(0);
+  // const [activeSlice, setActiveSlice] = useState(0);
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setActiveSlice((prev) => (prev + 1) % slices.length);
-    }, SLICE_INTERVAL_MS);
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     setActiveSlice((prev) => (prev + 1) % slices.length);
+  //   }, SLICE_INTERVAL_MS);
 
-    return () => clearInterval(id);
-  }, []);
+  //   return () => clearInterval(id);
+  // }, []);
 
   return (
     <section

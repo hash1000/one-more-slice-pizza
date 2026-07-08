@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
+import type { ReactElement } from "react";
 import { fadeUp, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 
 interface WhyItem {
   label: string;
-  icon: JSX.Element;
+  icon: ReactElement;
 }
 
 const iconProps = {

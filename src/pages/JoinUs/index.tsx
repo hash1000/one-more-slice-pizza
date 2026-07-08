@@ -1,6 +1,5 @@
 import { useScrollToHash } from "../../hooks/useScrollToHash";
 import {
-  JoinUsHero,
   WhyOneMoreSlice,
   IdealLocations,
   BrochureCTA,
