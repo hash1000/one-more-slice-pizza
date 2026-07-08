@@ -1,14 +1,61 @@
-import { motion } from "framer-motion";
-import { PizzaSliceAnimation } from "../../../components/PizzaSliceAnimation";
+import { AnimatePresence, motion } from "framer-motion";
+import heroCircle from "../../../assets/images/hero/circle.svg";
+import heroBadge from "../../../assets/images/hero/badge.svg";
 import { fadeUp, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
+import { useEffect, useState } from "react";
+
+import sliceBbqChicken from "../../../assets/slices/BBQ Chicken.png";
+import sliceBuffaloRanch from "../../../assets/slices/Buffalo Ranch.png";
+import sliceCaramelApple from "../../../assets/slices/Caramel Apple Sweet.png";
+import sliceCheese from "../../../assets/slices/Cheese.png";
+import sliceChickenSupreme from "../../../assets/slices/Chicken Supreme.png";
+import sliceChocolateBliss from "../../../assets/slices/Chocolate Bliss Sweet.png";
+import sliceChurroSupreme from "../../../assets/slices/Churro Supreme Sweet.png";
+import sliceEggBacon from "../../../assets/slices/Egg n Bacon.png";
+import sliceEggCheese from "../../../assets/slices/Egg n Cheese.png";
+import sliceEggSausage from "../../../assets/slices/Egg n Sausage.png";
+import sliceMeatLover from "../../../assets/slices/Meat Lover.png";
+import slicePepperoni from "../../../assets/slices/Pepperoni.png";
+import sliceSausage from "../../../assets/slices/Sausage.png";
+import sliceVeggie from "../../../assets/slices/Veggie.png";
+
+const slices = [
+  slicePepperoni,
+  sliceBbqChicken,
+  sliceBuffaloRanch,    
+  sliceChickenSupreme,
+  sliceMeatLover,
+  sliceSausage,
+  sliceVeggie,
+  sliceCheese,
+  sliceEggBacon,
+  sliceEggCheese,
+  sliceEggSausage,
+  sliceCaramelApple,
+  sliceChocolateBliss,
+  sliceChurroSupreme,
+];
+
+const SLICE_INTERVAL_MS = 3200;
+
 
 export function OurStory() {
+  const [activeSlice, setActiveSlice] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveSlice((prev) => (prev + 1) % slices.length);
+    }, SLICE_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, []);
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF7EC] via-[#FAF6F0] to-[#FCEEDD] pt-20 sm:pt-24 lg:min-h-[85vh] lg:pt-0">
+    <section className="relative overflow-hidden  pt-20 sm:pt-24 lg:min-h-[85vh] lg:pt-0">
       <div
-        className={`${containerClasses} grid grid-cols-1 items-center gap-12 py-12 sm:py-16 lg:min-h-[85vh] lg:grid-cols-2 lg:gap-16 lg:py-24`}
+        className={`${containerClasses} grid grid-cols-1 items-start gap-12 py-12 sm:py-16 lg:min-h-[85vh] lg:grid-cols-[55fr_45fr] lg:gap-8 lg:py-24`}
       >
+
         {/* Left: copy */}
         <motion.div
           initial="hidden"
@@ -16,12 +63,12 @@ export function OurStory() {
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.6 }}
-          className="order-2 lg:order-1"
+          className="order-2 lg:order-1 lg:pt-6"
         >
-          <h1 className="relative inline-block font-display text-5xl font-black leading-tight tracking-tight text-charcoal sm:text-6xl">
+          <h1 className="relative inline-block font-display text-6xl font-black leading-tight tracking-tight text-charcoal sm:text-7xl lg:text-8xl">
             Our Story
             <svg
-              className="absolute -bottom-3 left-0 w-full text-orange"
+              className="absolute -bottom-4 left-0 w-full text-orange"
               viewBox="0 0 200 12"
               fill="none"
               preserveAspectRatio="none"
@@ -31,46 +78,85 @@ export function OurStory() {
             </svg>
           </h1>
 
-          <h2 className="mt-8 font-display text-2xl font-black leading-snug tracking-tight text-charcoal sm:text-3xl">
-            More Than Pizza. <span className="text-orange">One Great Slice at a Time.</span>
+          <h2 className="mt-10 font-display text-3xl font-black leading-snug tracking-tight text-charcoal sm:text-4xl lg:text-5xl">
+            More Pizza. <span className="text-orange">One Big Slice at a Time.</span>
           </h2>
 
-          <p className="mt-6 font-body text-base leading-relaxed text-[#5C5049] sm:text-lg">
-            At One More Slice, we believe great pizza shouldn't require a special occasion.
-            Whether you're grabbing a quick lunch, feeding the family, satisfying a late-night
-            craving, or picking up something sweet, we're here to serve fresh, delicious food
-            that's ready when you are.
-          </p>
-
-          <p className="mt-5 font-body text-base leading-relaxed text-[#5C5049] sm:text-lg">
-            Every slice starts with quality ingredients, real mozzarella cheese, flavorful
-            sauces, and dough baked fresh throughout the day. It's pizza the way it should
-            be... hot, flavorful, satisfying, and always worth coming back for.
+          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#5C5049] sm:text-xl">
+            At One More Slice, we believe great pizza shouldn't require a special occasion. Whether you're grabbing a quick lunch, feeding the family, satisfying a late-night craving, or picking up something sweet, we're here to serve fresh, delicious food that's ready when you are always worth coming back for
           </p>
         </motion.div>
-
-        {/* Right: pizza on a warm cream surface */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, scale: 0.92, y: 24 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={viewportOnce}
-          variants={fadeUp}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative order-1 flex h-80 w-full items-center justify-center sm:h-[26rem] lg:order-2 lg:h-full"
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          className="relative order-1 mx-auto mt-6 flex w-full max-w-[28rem] items-center justify-center sm:max-w-[34rem] lg:order-2 lg:mt-0 lg:max-w-[46rem]"
         >
-          {/* Soft radial orange glow behind the pizza */}
-          <div
+          {/* Ambient glow */}
+          <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute h-56 w-56 rounded-full bg-orange/[0.07] blur-[70px] sm:h-80 sm:w-80 sm:blur-[100px] lg:h-[28rem] lg:w-[28rem] lg:blur-[120px]"
+            className="absolute h-[70%] w-[70%] rounded-full bg-orange/20 blur-3xl"
+            animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.08, 1] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Soft elliptical drop shadow under the pizza */}
-          <div
+          {/* Slow-rotating ring */}
+          <motion.img
+            src={heroCircle}
+            alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-[8%] h-10 w-2/3 rounded-full bg-[#2B1B12]/20 blur-2xl sm:h-14 lg:bottom-[12%]"
+            className="h-[75%] w-[75%]"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           />
 
-          <PizzaSliceAnimation className="relative aspect-square w-full max-w-md" />
+          {/* Gentle float wrapper for the slice */}
+          <motion.div
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <AnimatePresence mode="popLayout">
+              <motion.img
+                key={activeSlice}
+                src={slices[activeSlice]}
+                alt="A big slice of One More Slice pizza"
+                initial={{ opacity: 0, scale: 0.9, rotate: -20 }}
+                animate={{
+                  opacity: 1,
+                  scale: [0.9, 1.06, 0.97, 1.02, 1],
+                  rotate: [-20, -12, -14.5, -11.5, -12],
+                }}
+                exit={{ opacity: 0, scale: 0.9, rotate: -4 }}
+                transition={{
+                  opacity: { duration: 0.4, ease: "easeOut" },
+                  scale: {
+                    duration: 0.9,
+                    ease: [0.34, 1.56, 0.64, 1],
+                    times: [0, 0.45, 0.68, 0.86, 1],
+                  },
+                  rotate: {
+                    duration: 0.9,
+                    ease: [0.34, 1.56, 0.64, 1],
+                    times: [0, 0.45, 0.68, 0.86, 1],
+                  },
+                }}
+                className="absolute h-[100%] w-[100%] object-contain"
+              />
+            </AnimatePresence>
+          </motion.div>
+
+          <motion.img
+            src={heroBadge}
+            alt="Big size, made to satisfy"
+            className="pointer-events-none absolute bottom-[1%] -right-[1%] w-[45%] max-w-[16rem]"
+            initial={{ opacity: 0, scale: 0.6, rotate: -15 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1], delay: 0.5 }}
+            whileHover={{ scale: 1.08, rotate: 6 }}
+          />
         </motion.div>
       </div>
     </section>

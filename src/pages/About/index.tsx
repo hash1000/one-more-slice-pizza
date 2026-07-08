@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { OurStory, FreshFastFlavorful } from "./components";
+import { OurStory } from "./components";
 
 export function About() {
   useEffect(() => {
@@ -28,7 +28,6 @@ export function About() {
   return (
     <>
       <OurStory />
-      <FreshFastFlavorful />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useScrollToHash } from "../../hooks/useScrollToHash";
-import { Hero, Personality, BrandValue, LocationsSection, WhyItWorksSection } from "./components";
+import { Hero, BrandValue, LocationsSection, WhyItWorksSection } from "./components";
 
 export function Home() {
   useScrollToHash();
@@ -7,8 +7,6 @@ export function Home() {
   return (
     <>
       <Hero />
-      <Personality />
-      {/* <Craving /> */}
       <BrandValue />
       <LocationsSection />
       <WhyItWorksSection />

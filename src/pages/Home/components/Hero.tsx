@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { PizzaSliceAnimation } from "../../../components/PizzaSliceAnimation";
 import { useNavigate } from "react-router-dom";
 import heroBigSlice from "../../../assets/images/hero/hero-big-slice.svg";
-import heroCircle from "../../../assets/images/hero/circle.svg";
-import heroBadge from "../../../assets/images/hero/badge.svg";
 import icon1 from "../../../assets/images/hero/icon1.png";
 import icon2 from "../../../assets/images/hero/icon2.png";
 import icon3 from "../../../assets/images/hero/icon3.png";
 import icon4 from "../../../assets/images/hero/icon4.png";
 import { containerClasses } from "../../../utils/layout";
 import { buttonClasses } from "../../../utils/buttonStyles";
+import { fadeUp, viewportOnce } from "../../../utils/motion";
 
 // To add/remove slices, just add/remove entries here (and drop the matching
 // file into src/assets/slices/). The slider cycles through them in order.
@@ -151,7 +151,7 @@ export function Hero() {
         </motion.div>
 
         {/* Right: angled pizza slice photo */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
@@ -200,6 +200,31 @@ export function Hero() {
             alt="Big size, made to satisfy"
             className="pointer-events-none absolute bottom-[1%] -right-[1%] w-[45%] max-w-[16rem]"
           />
+        </motion.div> */}
+
+
+                {/* Right: pizza on a warm cream surface */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative order-1 flex h-80 w-full items-center justify-center sm:h-[26rem] lg:order-2 lg:h-full"
+        >
+          {/* Soft radial orange glow behind the pizza */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute h-56 w-56 rounded-full bg-orange/[0.07] blur-[70px] sm:h-80 sm:w-80 sm:blur-[100px] lg:h-[28rem] lg:w-[28rem] lg:blur-[120px]"
+          />
+
+          {/* Soft elliptical drop shadow under the pizza */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-[8%] h-10 w-2/3 rounded-full bg-[#2B1B12]/20 blur-2xl sm:h-14 lg:bottom-[12%]"
+          />
+
+          <PizzaSliceAnimation className="relative aspect-square w-full max-w-md" />
         </motion.div>
       </div>
       <div className=" mt-8 grid grid-cols-2 border-charcoal/10 pt-8 sm:grid-cols-4">

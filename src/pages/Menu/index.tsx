@@ -21,7 +21,6 @@ export function Menu() {
           key={category.id}
           category={category}
           isFirst={i === 0}
-          isDark={i === 2}
         />
       ))}
       <MenuCTA />

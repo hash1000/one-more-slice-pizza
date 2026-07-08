@@ -27,6 +27,7 @@ export interface MenuItem {
   image: string;
   alt: string;
   price: string;
+  badge?: string;
 }
 
 export interface MenuCategoryData {
@@ -34,7 +35,7 @@ export interface MenuCategoryData {
   tabLabel: string;
   title: string;
   subtitle: string;
-  columns: 4 | 3 | 1;
+  columns: 4 | 3;
   items: MenuItem[];
 }
 
@@ -61,7 +62,7 @@ export const menuCategories: MenuCategoryData[] = [
     tabLabel: "Breakfast Pizza",
     title: "Breakfast Pizza",
     subtitle: "A hearty start. In every slice.",
-    columns: 3,
+    columns: 4,
     items: [
       { name: "Egg & Cheese", ingredients: "Fluffy scrambled eggs over creamy cheddar sauce and five-cheese blend.", image: eggCheese, alt: "Egg and cheese breakfast pizza", price: "$X.XX" },
       { name: "Egg, Bacon & Cheese", ingredients: "Scrambled eggs and crispy bacon over creamy cheddar cheese sauce.", image: eggBaconCheese, alt: "Egg, bacon, and cheese breakfast pizza", price: "$X.XX" },
@@ -71,23 +72,14 @@ export const menuCategories: MenuCategoryData[] = [
   {
     id: "sweet-slices",
     tabLabel: "Sweet Slices",
-    title: "Sweet Slices",
+    title: "Sweet Slices & Snacks",
     subtitle: "Dessert worth saving room for.",
-    columns: 3,
+    columns: 4,
     items: [
       { name: "Caramel Apple", ingredients: "Warm apple pie filling on cinnamon-sugar crust with cream cheese icing and caramel drizzle.", image: caramelApple, alt: "Caramel Apple sweet slice", price: "$X.XX" },
       { name: "Chocolate Bliss", ingredients: "Warm chocolate hazelnut spread with toasted marshmallows, chocolate chips, and powdered sugar.", image: chocolateBliss, alt: "Chocolate Bliss sweet slice", price: "$X.XX" },
       { name: "Churro Supreme", ingredients: "Caramelized cinnamon-sugar crust drizzled with cream cheese icing and caramel.", image: churroSupreme, alt: "Churro Supreme sweet slice", price: "$X.XX" },
-    ],
-  },
-  {
-    id: "snacks",
-    tabLabel: "Snacks",
-    title: "Snacks",
-    subtitle: "Perfect on the side.",
-    columns: 1,
-    items: [
-      { name: "Cheesy Garlic Dippers", ingredients: "Golden-baked cheesy garlic crust cut into 12 dippers, served with dipping sauce.", image: garlicDippers, alt: "Cheesy Garlic Dippers", price: "$X.XX" },
+      { name: "Cheesy Garlic Dippers", ingredients: "Golden-baked cheesy garlic crust cut into 12 dippers, served with dipping sauce.", image: garlicDippers, alt: "Cheesy Garlic Dippers", price: "$X.XX", badge: "SNACK" },
     ],
   },
 ];
