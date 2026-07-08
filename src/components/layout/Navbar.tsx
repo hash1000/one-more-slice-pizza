@@ -66,7 +66,7 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
             onClick={() => handleNavClick("/menu")}
             className={buttonClasses("dark", "sm")}
           >
-            See the Slice
+            See the Slices
           </button>
         </div>
 
@@ -106,7 +106,7 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
                 onClick={() => handleNavClick("/menu")}
                 className={buttonClasses("primary", "sm", "mt-2 w-full")}
               >
-                See the Slice
+                See the Slices
               </button>
             </div>
           </motion.div>

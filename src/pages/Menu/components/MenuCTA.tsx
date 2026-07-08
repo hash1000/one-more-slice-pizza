@@ -22,7 +22,7 @@ export function MenuCTA() {
           <p className="mt-2 font-body text-base text-cream/55">Go ahead. Order now.</p>
         </div>
         <Link to="/#hero" className={buttonClasses("primary", "lg")}>
-          See The Slice
+          See The Slices
         </Link>
       </motion.div>
     </section>

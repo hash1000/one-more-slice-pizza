@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PizzaSliceAnimation } from "../../../components/PizzaSliceAnimation";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import heroBigSlice from "../../../assets/images/hero/hero-big-slice.svg";
 import icon1 from "../../../assets/images/hero/icon1.png";
@@ -71,7 +71,31 @@ const features = [
 
 export function Hero() {
   const navigate = useNavigate();
+  const videoRef = useRef<HTMLVideoElement>(null);
   // const [activeSlice, setActiveSlice] = useState(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const reduceMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+
+    const applyMotionPreference = () => {
+      if (reduceMotionQuery.matches) {
+        video.pause();
+        video.currentTime = 0;
+      } else {
+        video.play().catch(() => {});
+      }
+    };
+
+    applyMotionPreference();
+    reduceMotionQuery.addEventListener("change", applyMotionPreference);
+    return () =>
+      reduceMotionQuery.removeEventListener("change", applyMotionPreference);
+  }, []);
 
   // useEffect(() => {
   //   const id = setInterval(() => {
@@ -84,10 +108,10 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden bg-[#FAF7F2] pt-28 pb-16 sm:pt-32 lg:pb-20"
+      className="relative w-full overflow-hidden bg-[#FAF7F2] pt-28 pb-16 sm:pt-24 lg:pb-20 sm:ps-4 lg:pe-4"
     >
       <div
-        className={`${containerClasses} grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-8 pt-8 pb-16 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24`}
+        className={`${containerClasses} grid grid-cols-1 items-center lg:grid-cols-[40fr_60fr] pt-8 pb-16 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24`}
       >
         {/* Left: copy */}
         <motion.div
@@ -96,32 +120,31 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative z-10 text-center lg:text-left"
         >
-          
-          <div className="ml-[3rem] lg:ml-[6rem]">
+          <div className="ml-[3rem] lg:ml-0">
             <img
-            src={heroBigSlice}
-            alt="Our Promise Is Simple: Big Slice"
-            className="mx-auto w-full max-w-[30rem] lg:mx-0"
-          />
-            <p className="mt-5 font-display text-2xl font-bold uppercase tracking-wide text-charcoal sm:text-3xl">
+              src={heroBigSlice}
+              alt="Our Promise Is Simple: Big Slice"
+              className="mx-auto w-full max-w-[39rem] lg:mx-0"
+            />
+            <p className="mt-6 w-fit font-display text-3xl font-bold uppercase tracking-wide text-charcoal sm:text-4xl">
               More Pizza. More Satisfaction.
             </p>
 
-            <p className="mx-auto mt-3 max-w-[48ch] text-lg text-charcoal/60 lg:mx-0">
+            <p className="mx-auto mt-4 max-w-[48ch] text-xl text-charcoal/60 lg:mx-0">
               We serve{" "}
               <span className="font-semibold text-orange">big slices</span>{" "}
               packed with flavor and made to satisfy.
             </p>
 
-            <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
+            <div className="mt-10 inline-flex flex-col items-center gap-5 sm:flex-row">
               <button
                 onClick={() => navigate("/menu")}
                 className={buttonClasses("primary", "lg")}
               >
-                See the Slice
+                See the Slices
               </button>
 
-              <button
+              {/* <button
                 onClick={() =>
                   document
                     .querySelector("#our-story")
@@ -142,74 +165,21 @@ export function Hero() {
                   </svg>
                 </span>
                 Build your own Pizza
-              </button>
+              </button> */}
             </div>
           </div>
 
           {/* Feature row */}
         </motion.div>
 
-        {/* Right: angled pizza slice photo */}
-        {/* <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          className="relative mx-auto mt-6 flex w-full max-w-[26rem] items-center justify-center sm:max-w-[32rem] lg:mt-0 lg:max-w-[40rem]"
-        >
-          <img
-            src={heroCircle}
-            alt=""
-            aria-hidden="true"
-            className="h-[75%] w-[75%]"
-          />
-
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <AnimatePresence mode="popLayout">
-              <motion.img
-                key={activeSlice}
-                src={slices[activeSlice]}
-                alt="A big slice of One More Slice pizza"
-                initial={{ opacity: 0, scale: 0.9, rotate: -20 }}
-                animate={{
-                  opacity: 1,
-                  scale: [0.9, 1.06, 0.97, 1.02, 1],
-                  rotate: [-20, -12, -14.5, -11.5, -12],
-                }}
-                exit={{ opacity: 0, scale: 0.9, rotate: -4 }}
-                transition={{
-                  opacity: { duration: 0.4, ease: "easeOut" },
-                  scale: {
-                    duration: 0.9,
-                    ease: [0.34, 1.56, 0.64, 1],
-                    times: [0, 0.45, 0.68, 0.86, 1],
-                  },
-                  rotate: {
-                    duration: 0.9,
-                    ease: [0.34, 1.56, 0.64, 1],
-                    times: [0, 0.45, 0.68, 0.86, 1],
-                  },
-                }}
-                className="absolute h-[100%] w-[100%] object-contain"
-              />
-            </AnimatePresence>
-          </div>
-
-          <img
-            src={heroBadge}
-            alt="Big size, made to satisfy"
-            className="pointer-events-none absolute bottom-[1%] -right-[1%] w-[45%] max-w-[16rem]"
-          />
-        </motion.div> */}
-
-
-                {/* Right: pizza on a warm cream surface */}
+        {/* Right: pizza on a warm cream surface */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative order-1 flex h-80 w-full items-center justify-center sm:h-[26rem] lg:order-2 lg:h-full"
+          className="relative order-1 mx-auto flex w-full max-w-[28rem] items-center justify-center sm:max-w-[34rem] lg:order-2 lg:max-w-[46rem]"
         >
           {/* Soft radial orange glow behind the pizza */}
           <div
@@ -223,7 +193,19 @@ export function Hero() {
             className="pointer-events-none absolute bottom-[8%] h-10 w-2/3 rounded-full bg-[#2B1B12]/20 blur-2xl sm:h-14 lg:bottom-[12%]"
           />
 
-          <PizzaSliceAnimation className="relative aspect-square w-full max-w-md" />
+          <video
+            ref={videoRef}
+            className="relative aspect-square w-full object-contain"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/videos/hero-poster.jpg"
+          >
+            <source src="/videos/hero-animation.webm" type="video/webm" />
+            <source src="/videos/hero-animation.mp4" type="video/mp4" />
+          </video>
         </motion.div>
       </div>
       <div className=" mt-8 grid grid-cols-2 border-charcoal/10 pt-8 sm:grid-cols-4">

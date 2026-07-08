@@ -4,7 +4,7 @@ import { containerClasses } from "../../../utils/layout";
 
 export function PartnerHero() {
   return (
-    <section className="relative overflow-hidden bg-charcoal pt-32 pb-20 text-cream sm:pt-40 sm:pb-28">
+    <section className="relative overflow-hidden bg-charcoal pt-32 pb-20 text-cream sm:pt-32 sm:pb-4">
       <div className="pointer-events-none absolute -top-1/3 left-1/2 -z-10 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-orange/15 blur-[140px]" />
       <div className={containerClasses}>
         <div className="mx-auto max-w-4xl text-center">
@@ -14,7 +14,7 @@ export function PartnerHero() {
             viewport={viewportOnce}
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="font-display text-4xl font-black uppercase leading-tight tracking-tight text-balance sm:text-5xl lg:text-6xl"
+            className="font-display text-4xl font-black uppercase leading-tight tracking-tight text-balance lg:text-4xl"
           >
             Partner With <span className="text-orange">One More Slice</span>
           </motion.h1>
@@ -28,7 +28,7 @@ export function PartnerHero() {
           >
             Two Powerful Ways to Grow Your Business.
           </motion.p>
-          <motion.p
+          {/* <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
@@ -38,7 +38,7 @@ export function PartnerHero() {
           >
             Whether you want to open a new pizza restaurant or add our proven pizza
             program to your existing business, we have the perfect solution for you.
-          </motion.p>
+          </motion.p> */}
         </div>
       </div>
     </section>
