@@ -1,4 +1,4 @@
-import logoFull from "../../assets/images/brand/logo.png";
+import logoFull from "../../assets/images/brand/logo.webp";
 import logoMark from "../../assets/images/brand/logo-mark.png";
 
 interface LogoProps {
