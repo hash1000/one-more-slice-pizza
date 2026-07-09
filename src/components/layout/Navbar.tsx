@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { navLinks } from "../../data/navigation";
@@ -11,6 +11,7 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -18,6 +19,30 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const onClickOutside = (e: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onClickOutside);
+
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onClickOutside);
+    };
+  }, [open]);
 
   const handleNavClick = (href: string) => {
     setOpen(false);
@@ -57,14 +82,14 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
           <Logo variant="plain" className="h-14 w-auto sm:h-18" />
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => {
             const active = isLinkActive(link.href);
             return (
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`group relative cursor-pointer py-1 font-display text-sm font-semibold uppercase tracking-wide transition-colors duration-150 ease-in-out hover:text-orange ${
+                className={`group relative cursor-pointer py-1 font-display text-base font-semibold uppercase tracking-wide transition-colors duration-150 ease-in-out hover:text-orange ${
                   active ? "text-orange" : "text-charcoal/80"
                 }`}
               >
@@ -80,7 +105,7 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
           })}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <button
             onClick={() => handleNavClick("/menu")}
             className={buttonClasses("dark", "sm")}
@@ -91,8 +116,9 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
 
         <button
           aria-label="Toggle menu"
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-charcoal/15 bg-white/60 md:hidden"
+          className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-charcoal/15 bg-white/60 lg:hidden"
         >
           <motion.span animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className="h-0.5 w-5 rounded-full bg-charcoal" />
           <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} className="h-0.5 w-5 rounded-full bg-charcoal" />
@@ -103,18 +129,19 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden bg-cream/95 backdrop-blur-md md:hidden"
+            ref={panelRef}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="overflow-hidden bg-cream/95 backdrop-blur-md lg:hidden"
           >
             <div className="flex flex-col gap-1 px-6 pb-6 pt-2">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className={`cursor-pointer rounded-xl px-4 py-3 text-left font-display text-base font-semibold transition-colors hover:bg-orange/10 hover:text-orange ${
+                  className={`flex min-h-11 cursor-pointer items-center rounded-xl px-4 py-3 text-left font-display text-base font-semibold transition-colors hover:bg-orange/10 hover:text-orange ${
                     isLinkActive(link.href) ? "bg-orange/10 text-orange" : "text-charcoal"
                   }`}
                 >
@@ -123,7 +150,7 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
               ))}
               <button
                 onClick={() => handleNavClick("/menu")}
-                className={buttonClasses("primary", "sm", "mt-2 w-full")}
+                className={buttonClasses("primary", "sm", "mt-2 min-h-11 w-full")}
               >
                 See the Slices
               </button>

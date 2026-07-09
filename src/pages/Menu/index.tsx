@@ -21,6 +21,7 @@ export function Menu() {
           key={category.id}
           category={category}
           isFirst={i === 0}
+          sectionIndex={i}
         />
       ))}
       <MenuCTA />

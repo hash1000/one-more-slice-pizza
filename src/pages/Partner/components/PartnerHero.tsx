@@ -4,8 +4,8 @@ import { containerClasses } from "../../../utils/layout";
 
 export function PartnerHero() {
   return (
-    <section className="relative overflow-hidden bg-charcoal pt-32 pb-20 text-cream sm:pt-32 sm:pb-4">
-      <div className="pointer-events-none absolute -top-1/3 left-1/2 -z-10 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-orange/15 blur-[140px]" />
+    <section className="relative overflow-hidden bg-charcoal pt-32 pb-16 text-cream sm:pt-36 sm:pb-20 lg:pt-40">
+      <div className="pointer-events-none absolute -top-1/3 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-orange/15 blur-[80px] sm:h-96 sm:w-96 sm:blur-[110px] lg:h-[36rem] lg:w-[36rem] lg:blur-[140px]" />
       <div className={containerClasses}>
         <div className="mx-auto max-w-4xl text-center">
           <motion.h1
@@ -14,7 +14,7 @@ export function PartnerHero() {
             viewport={viewportOnce}
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="font-display text-4xl font-black uppercase leading-tight tracking-tight text-balance lg:text-4xl"
+            className="font-display text-4xl font-black uppercase leading-tight tracking-tight text-balance sm:text-5xl lg:text-6xl"
           >
             Partner With <span className="text-orange">One More Slice</span>
           </motion.h1>
@@ -24,7 +24,7 @@ export function PartnerHero() {
             viewport={viewportOnce}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 font-display text-lg font-bold text-cream/90 sm:text-xl"
+            className="mt-4 font-display text-lg font-bold text-cream/95 sm:text-xl"
           >
             Two Powerful Ways to Grow Your Business.
           </motion.p>

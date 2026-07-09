@@ -47,27 +47,27 @@ export function ThankYou() {
         <p className="mt-3 font-body text-base font-semibold text-charcoal/80">
           We've received your information.
         </p>
-        <p className="mx-auto mt-3 max-w-md font-body text-sm leading-relaxed text-charcoal/60">
+        <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-muted">
           One of our team members will review your information and be in touch within
           1 business day to discuss the best opportunity for your business.
         </p>
       </motion.div>
 
-      <div className="mt-12 grid gap-8 text-left sm:grid-cols-5 sm:gap-4 sm:text-center">
+      <div className="mt-12 grid gap-8 text-left sm:grid-cols-2 sm:gap-4 sm:text-center md:grid-cols-3 lg:grid-cols-5">
         {nextSteps.map((step, index) => (
           <div key={step.title} className="flex flex-col items-center gap-3">
             <span className="text-3xl" aria-hidden="true">
               {step.icon}
             </span>
-            <p className="font-display text-xs font-bold uppercase tracking-wide text-charcoal">
+            <p className="font-display text-sm font-bold uppercase tracking-wide text-charcoal">
               {step.title}
             </p>
-            <p className="font-body text-xs leading-relaxed text-charcoal/60">
+            <p className="font-body text-sm leading-relaxed text-muted">
               {step.body}
             </p>
             {index < nextSteps.length - 1 && (
               <span
-                className="hidden text-orange sm:block"
+                className="hidden text-orange lg:block"
                 aria-hidden="true"
               >
                 →

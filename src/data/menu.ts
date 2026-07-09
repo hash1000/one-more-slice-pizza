@@ -1,22 +1,22 @@
 // Signature
-import cheese from "../assets/images/menu/signature/cheese.png";
-import pepperoni from "../assets/images/menu/signature/pepperoni.png";
-import sausage from "../assets/images/menu/signature/sausauge.png";
-import veggie from "../assets/images/menu/signature/veggie.png";
-import meatLovers from "../assets/images/menu/signature/meat-lover.png";
-import bbqChicken from "../assets/images/menu/signature/bbq-chicken.png";
-import buffaloRanch from "../assets/images/menu/signature/buffalo-ranch.png";
-import chickenSupreme from "../assets/images/menu/signature/chicken-supreme.png";
+import cheese from "../assets/images/menu/signature/cheese.webp";
+import pepperoni from "../assets/images/menu/signature/pepperoni.webp";
+import sausage from "../assets/images/menu/signature/sausage.webp";
+import veggie from "../assets/images/menu/signature/veggie.webp";
+import meatLovers from "../assets/images/menu/signature/meat-lovers.webp";
+import bbqChicken from "../assets/images/menu/signature/bbq-chicken.webp";
+import buffaloRanch from "../assets/images/menu/signature/buffalo-ranch.webp";
+import chickenSupreme from "../assets/images/menu/signature/chicken-supreme.webp";
 
 // Breakfast
-import eggSausageCheese from "../assets/images/menu/breakfast/egg-n-sausage.png";
-import eggBaconCheese from "../assets/images/menu/breakfast/egg-n-bacon.png";
-import eggCheese from "../assets/images/menu/breakfast/egg-n-cheese.png";
+import eggSausageCheese from "../assets/images/menu/breakfast/egg-sausage-cheese.webp";
+import eggBaconCheese from "../assets/images/menu/breakfast/egg-bacon-cheese.webp";
+import eggCheese from "../assets/images/menu/breakfast/egg-cheese.webp";
 
 // Sweet slices
-import caramelApple from "../assets/images/menu/sweet-slices/caramel-apple-sweet-slice.png";
-import chocolateBliss from "../assets/images/menu/sweet-slices/choco-bliss-weet-slice.png";
-import churroSupreme from "../assets/images/menu/sweet-slices/churro-supreme-sweet-slice.png";
+import caramelApple from "../assets/images/menu/sweet-slices/caramel-apple.webp";
+import chocolateBliss from "../assets/images/menu/sweet-slices/chocolate-bliss.webp";
+import churroSupreme from "../assets/images/menu/sweet-slices/churro-supreme.webp";
 
 // Snacks
 import garlicDippers from "../assets/images/menu/snacks/garlic-sticks.png";
@@ -71,7 +71,7 @@ export const menuCategories: MenuCategoryData[] = [
   },
   {
     id: "sweet-slices",
-    tabLabel: "Sweet Slices",
+    tabLabel: "Sweet Slices & Snacks",
     title: "Sweet Slices & Snacks",
     subtitle: "Dessert worth saving room for.",
     columns: 4,

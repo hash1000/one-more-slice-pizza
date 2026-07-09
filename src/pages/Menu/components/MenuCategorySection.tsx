@@ -6,23 +6,25 @@ import type { MenuCategoryData } from "../../../data/menu";
 interface MenuCategorySectionProps {
   category: MenuCategoryData;
   isFirst: boolean;
+  sectionIndex: number;
 }
 
-export function MenuCategorySection({ category, isFirst }: MenuCategorySectionProps) {
+export function MenuCategorySection({ category, isFirst, sectionIndex }: MenuCategorySectionProps) {
   const headingColor = "text-charcoal";
-  const subtitleColor = "text-charcoal/55";
-  const cardBg = "bg-cream";
-  const cardBorder = "border-charcoal/8";
+  const subtitleColor = "text-muted";
+  const cardBg = "bg-card";
+  const cardBorder = "border-charcoal/12";
   const nameColor = "text-charcoal";
-  const ingredientColor = "text-charcoal/55";
+  const ingredientColor = "text-muted";
+  const sectionBg = sectionIndex % 2 === 1 ? "bg-peach" : "bg-cream";
 
   return (
     <section
       id={category.id}
-      className="relative scroll-mt-37.5 overflow-hidden bg-cream py-16 sm:py-20"
+      className={`relative scroll-mt-28 overflow-hidden ${sectionBg} py-10 sm:scroll-mt-32 sm:py-14`}
     >
       {!isFirst && (
-        <div className="pointer-events-none absolute -bottom-20 -right-20 -z-0 h-64 w-64 rounded-full bg-orange/8 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-20 -right-20 -z-0 h-40 w-40 rounded-full bg-orange/8 blur-[80px] sm:h-64 sm:w-64 sm:blur-[100px]" />
       )}
 
       <div className={`relative ${containerClasses}`}>
@@ -32,9 +34,9 @@ export function MenuCategorySection({ category, isFirst }: MenuCategorySectionPr
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="flex flex-wrap items-center gap-4"
+          className="flex flex-wrap items-center gap-3"
         >
-          <span className={`rounded-2xl bg-orange/10 px-5 py-2 font-display text-3xl font-black tracking-tight sm:text-4xl ${headingColor}`}>
+          <span className={`rounded-2xl bg-orange/10 px-5 py-1.5 font-display text-2xl font-black tracking-tight sm:text-3xl ${headingColor}`}>
             {category.title}
           </span>
           {isFirst && (
@@ -42,49 +44,45 @@ export function MenuCategorySection({ category, isFirst }: MenuCategorySectionPr
               Bestseller
             </span>
           )}
+          <span className={`font-body text-base ${subtitleColor}`}>{category.subtitle}</span>
         </motion.div>
-        <p className={`mt-3 font-body text-base ${subtitleColor}`}>{category.subtitle}</p>
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mt-6 h-1 w-16 origin-left rounded-full bg-orange"
-        />
 
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="mt-10 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 lg:grid-cols-4"
+          className="mt-5 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4"
         >
           {category.items.map((item) => (
             <motion.div
               key={item.name}
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className={`group relative flex min-h-80 flex-col items-center overflow-hidden rounded-2xl border ${cardBorder} ${cardBg} px-4 py-6 text-center shadow-soft transition-all duration-200 ease-in-out hover:-translate-y-1 hover:shadow-warm-lg`}
+              className={`menu-card group relative flex h-80 cursor-pointer flex-col items-center overflow-hidden rounded-2xl border ${cardBorder} ${cardBg} px-4 py-4 text-center shadow-soft sm:h-96`}
             >
               {item.badge && (
-                <span className="absolute right-3 top-3 rounded-full bg-charcoal px-2.5 py-1 font-display text-[0.6rem] font-bold uppercase tracking-widest text-cream">
+                <span className="absolute right-3 top-3 z-10 rounded-full bg-charcoal px-2.5 py-1 font-display text-[0.6rem] font-bold uppercase tracking-widest text-cream">
                   {item.badge}
                 </span>
               )}
-              <img
-                src={item.image}
-                alt={item.alt}
-                width={140}
-                height={140}
-                className="h-35 w-35 object-contain transition-transform duration-250 ease-in-out group-hover:scale-105"
-                loading="lazy"
-                draggable={false}
-              />
-              <p className={`mt-4 font-display text-base font-bold ${nameColor}`}>{item.name}</p>
-              <p className={`mt-1 line-clamp-2 font-body text-sm leading-snug ${ingredientColor}`}>{item.ingredients}</p>
-              <p className="mt-3 inline-block rounded-full bg-orange px-3 py-1 font-display text-base font-black text-cream shadow-warm transition-[filter] duration-200 ease-in-out group-hover:brightness-105">
-                {item.price}
-              </p>
+              <div className="flex h-[45%] w-[62%] shrink-0 items-center justify-center overflow-visible">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width={150}
+                  height={250}
+                  className="slice-diagonal h-[72%] w-[72%] object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                />
+              </div>
+              <p className={`menu-card-title mt-3 font-display text-xl font-bold leading-snug ${nameColor}`}>{item.name}</p>
+              <p className={`mt-1 line-clamp-3 font-body text-base leading-relaxed ${ingredientColor}`}>{item.ingredients}</p>
+              {/* <span className="mt-auto inline-flex items-center gap-1 rounded-full bg-orange/10 px-3 py-1 font-display text-[0.65rem] font-bold uppercase tracking-widest text-orange-dark">
+                Halal available
+              </span> */}
             </motion.div>
           ))}
         </motion.div>

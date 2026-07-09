@@ -3,6 +3,8 @@
 @theme {
   --color-cream: #ffffff;
   --color-cream-soft: #f7f5f2;
+  --color-peach: #fbf3ec;
+  --color-card: #fffbf7;
   --color-charcoal: #221710;
   --color-charcoal-soft: #36251b;
   --color-orange: #f2541c;
@@ -11,6 +13,7 @@
   --color-cheese: #ffc93c;
   --color-tomato: #c1392b;
   --color-crust: #b9854a;
+  --color-muted: #6b5a4f;
 
   --font-display: "Poppins", "Inter", sans-serif;
   --font-body: "Inter", "Poppins", sans-serif;
@@ -56,6 +59,15 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+
+  .menu-card:hover,
+  .location-card:hover {
+    transform: none !important;
+  }
+
+  .slice-diagonal {
+    transform: rotate(-35deg) !important;
+  }
 }
 
 @layer utilities {
@@ -71,5 +83,37 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .slice-diagonal {
+    transform: rotate(-35deg);
+    transition: transform 300ms ease-out;
+  }
+
+  .menu-card,
+  .location-card {
+    transition:
+      transform 250ms ease-out,
+      box-shadow 250ms ease-out;
+  }
+
+  .menu-card .menu-card-title {
+    transition: color 150ms ease-out;
+  }
+
+  @media (hover: hover) {
+    .menu-card:hover,
+    .location-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-warm-lg);
+    }
+
+    .menu-card:hover .slice-diagonal {
+      transform: rotate(-39deg) scale(1.1);
+    }
+
+    .menu-card:hover .menu-card-title {
+      color: var(--color-orange);
+    }
   }
 }

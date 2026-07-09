@@ -135,7 +135,7 @@ export function LocationsSection() {
               key={item.label}
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="flex flex-col items-center gap-3 rounded-3xl bg-white p-6 text-center shadow-warm transition-all duration-200 ease-in-out hover:-translate-y-1 hover:shadow-warm-lg sm:p-8"
+              className="location-card flex cursor-pointer flex-col items-center gap-3 rounded-3xl bg-white p-6 text-center shadow-warm sm:p-8"
             >
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-orange/10 text-orange">
                 {item.icon}

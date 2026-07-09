@@ -14,7 +14,7 @@ function App() {
   }, [pathname, hash]);
 
   return (
-    <div className="relative bg-white">
+    <div className="relative overflow-x-hidden bg-white">
       <div className="grain-overlay" />
       {isMenuPage && <HalalBar />}
       <Navbar offset={isMenuPage} />

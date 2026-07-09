@@ -57,7 +57,7 @@ export function PartnerProcess() {
         >
           What Happens Next
         </motion.h2>
-        <div className="mx-auto mt-14 grid max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+        <div className="mx-auto mt-14 grid max-w-6xl gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-6">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
@@ -73,10 +73,10 @@ export function PartnerProcess() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange/10 text-orange">
                   <Icon className="h-8 w-8" aria-hidden="true" />
                 </div>
-                <h3 className="mt-4 font-display text-sm font-bold uppercase tracking-wide text-charcoal">
+                <h3 className="mt-4 font-display text-base font-bold uppercase tracking-wide text-charcoal">
                   {step.title}
                 </h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-charcoal/70">
+                <p className="mt-2 font-body text-base leading-relaxed text-muted">
                   {step.body}
                 </p>
                 {index < steps.length - 1 && (

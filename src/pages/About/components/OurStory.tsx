@@ -5,20 +5,20 @@ import { fadeUp, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 import { useEffect, useState } from "react";
 
-import sliceBbqChicken from "../../../assets/slices/BBQ Chicken.png";
-import sliceBuffaloRanch from "../../../assets/slices/Buffalo Ranch.png";
-import sliceCaramelApple from "../../../assets/slices/Caramel Apple Sweet.png";
-import sliceCheese from "../../../assets/slices/Cheese.png";
-import sliceChickenSupreme from "../../../assets/slices/Chicken Supreme.png";
-import sliceChocolateBliss from "../../../assets/slices/Chocolate Bliss Sweet.png";
-import sliceChurroSupreme from "../../../assets/slices/Churro Supreme Sweet.png";
-import sliceEggBacon from "../../../assets/slices/Egg n Bacon.png";
-import sliceEggCheese from "../../../assets/slices/Egg n Cheese.png";
-import sliceEggSausage from "../../../assets/slices/Egg n Sausage.png";
-import sliceMeatLover from "../../../assets/slices/Meat Lover.png";
-import slicePepperoni from "../../../assets/slices/Pepperoni.png";
-import sliceSausage from "../../../assets/slices/Sausage.png";
-import sliceVeggie from "../../../assets/slices/Veggie.png";
+import sliceBbqChicken from "../../../assets/images/menu/signature/bbq-chicken.webp";
+import sliceBuffaloRanch from "../../../assets/images/menu/signature/buffalo-ranch.webp";
+import sliceCaramelApple from "../../../assets/images/menu/sweet-slices/caramel-apple.webp";
+import sliceCheese from "../../../assets/images/menu/signature/cheese.webp";
+import sliceChickenSupreme from "../../../assets/images/menu/signature/chicken-supreme.webp";
+import sliceChocolateBliss from "../../../assets/images/menu/sweet-slices/chocolate-bliss.webp";
+import sliceChurroSupreme from "../../../assets/images/menu/sweet-slices/churro-supreme.webp";
+import sliceEggBacon from "../../../assets/images/menu/breakfast/egg-bacon-cheese.webp";
+import sliceEggCheese from "../../../assets/images/menu/breakfast/egg-cheese.webp";
+import sliceEggSausage from "../../../assets/images/menu/breakfast/egg-sausage-cheese.webp";
+import sliceMeatLover from "../../../assets/images/menu/signature/meat-lovers.webp";
+import slicePepperoni from "../../../assets/images/menu/signature/pepperoni.webp";
+import sliceSausage from "../../../assets/images/menu/signature/sausage.webp";
+import sliceVeggie from "../../../assets/images/menu/signature/veggie.webp";
 
 const slices = [
   slicePepperoni,
@@ -53,7 +53,7 @@ export function OurStory() {
   return (
     <section className="relative overflow-hidden  pt-20 sm:pt-24 lg:min-h-[85vh] lg:pt-0">
       <div
-        className={`${containerClasses} grid grid-cols-1 items-start gap-12 py-12 sm:py-16 lg:min-h-[85vh] lg:grid-cols-[55fr_45fr] lg:gap-8 lg:py-24`}
+        className={`${containerClasses} grid grid-cols-1 items-start gap-12 py-12 sm:py-16 md:grid-cols-2 lg:min-h-[85vh] lg:grid-cols-[55fr_45fr] lg:gap-8 lg:py-24`}
       >
 
         {/* Left: copy */}
@@ -65,7 +65,7 @@ export function OurStory() {
           transition={{ duration: 0.6 }}
           className="order-2 lg:order-1 lg:pt-6"
         >
-          <h1 className="relative inline-block font-display text-6xl font-black leading-tight tracking-tight text-charcoal sm:text-7xl lg:text-8xl">
+          <h1 className="relative inline-block font-display text-4xl font-black leading-tight tracking-tight text-charcoal sm:text-6xl lg:text-8xl">
             Our Story
             <svg
               className="absolute -bottom-4 left-0 w-full text-orange"
@@ -82,7 +82,7 @@ export function OurStory() {
             More Pizza. <span className="text-orange">One Big Slice at a Time.</span>
           </h2>
 
-          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#5C5049] sm:text-xl">
+          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-muted sm:text-xl">
             At One More Slice, we believe great pizza shouldn't require a special occasion. Whether you're grabbing a quick lunch, feeding the family, satisfying a late-night craving, or picking up something sweet, we're here to serve fresh, delicious food that's ready when you are always worth coming back for
           </p>
         </motion.div>

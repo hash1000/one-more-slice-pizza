@@ -108,10 +108,10 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden bg-[#FAF7F2] pt-28 pb-16 sm:pt-24 lg:pb-20 sm:ps-4 lg:pe-4"
+      className="relative w-full overflow-hidden bg-[#FAF7F2] pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-20 sm:ps-4 lg:pe-4"
     >
       <div
-        className={`${containerClasses} grid grid-cols-1 items-center lg:grid-cols-[40fr_60fr] pt-8 pb-16 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24`}
+        className={`${containerClasses} grid grid-cols-1 items-center lg:grid-cols-[40fr_60fr] pt-4 pb-16 sm:pb-20 lg:pb-24`}
       >
         {/* Left: copy */}
         <motion.div
@@ -120,17 +120,17 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative z-10 text-center lg:text-left"
         >
-          <div className="ml-[3rem] lg:ml-0">
+          <div className="ml-6 sm:ml-8 lg:ml-0">
             <img
               src={heroBigSlice}
               alt="Our Promise Is Simple: Big Slice"
               className="mx-auto w-full max-w-[39rem] lg:mx-0"
             />
-            <p className="mt-6 w-fit font-display text-3xl font-bold uppercase tracking-wide text-charcoal sm:text-4xl">
+            <p className="mt-6 w-fit font-display text-3xl font-bold uppercase tracking-wide text-charcoal sm:text-4xl lg:text-5xl">
               More Pizza. More Satisfaction.
             </p>
 
-            <p className="mx-auto mt-4 max-w-[48ch] text-xl text-charcoal/60 lg:mx-0">
+            <p className="mx-auto mt-4 max-w-[48ch] text-xl text-muted lg:mx-0">
               We serve{" "}
               <span className="font-semibold text-orange">big slices</span>{" "}
               packed with flavor and made to satisfy.
@@ -229,7 +229,7 @@ export function Hero() {
               <p className="font-display text-sm font-bold uppercase tracking-wide text-charcoal">
                 {feature.label}
               </p>
-              <p className="text-xs leading-snug text-charcoal/55">
+              <p className="text-base leading-snug text-muted">
                 {feature.description}
               </p>
             </div>

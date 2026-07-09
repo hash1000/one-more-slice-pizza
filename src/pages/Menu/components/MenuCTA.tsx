@@ -6,7 +6,7 @@ import { buttonClasses } from "../../../utils/buttonStyles";
 
 export function MenuCTA() {
   return (
-    <section className="bg-charcoal py-14 sm:py-16">
+    <section className="bg-charcoal py-16 sm:py-20 lg:py-24">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -19,7 +19,7 @@ export function MenuCTA() {
           <p className="font-display text-3xl font-black leading-tight tracking-tight text-cream sm:text-4xl">
             <span className="text-orange">One more</span> won&apos;t hurt.
           </p>
-          <p className="mt-2 font-body text-base text-cream/55">Go ahead. Order now.</p>
+          <p className="mt-2 font-body text-base text-cream/70">Go ahead. Order now.</p>
         </div>
         <Link to="/#hero" className={buttonClasses("primary", "lg")}>
           See The Slices
