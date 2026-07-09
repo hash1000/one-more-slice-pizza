@@ -50,7 +50,7 @@ export function PartnerOptions() {
               viewport={viewportOnce}
               variants={fadeUp}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex flex-col rounded-2xl border border-charcoal/8 bg-white p-8 shadow-soft"
+              className="flex flex-col rounded-2xl border border-charcoal/8 bg-white p-8 shadow-soft transition-all duration-200 ease-in-out hover:-translate-y-1 hover:shadow-warm-lg"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange/10 text-orange">
                 <Icon className="h-6 w-6" aria-hidden="true" />

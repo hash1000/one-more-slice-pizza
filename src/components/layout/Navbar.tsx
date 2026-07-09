@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { navLinks } from "../../data/navigation";
@@ -8,8 +8,16 @@ import { Logo } from "../../components/ui/Logo";
 
 export function Navbar({ offset = false }: { offset?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleNavClick = (href: string) => {
     setOpen(false);
@@ -38,9 +46,11 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
 
   return (
     <header
-      className={`fixed inset-x-0 z-50 bg-cream/85 backdrop-blur-md shadow-[0_4px_30px_-15px_rgba(34,23,16,0.3)] ${
-        offset ? "top-9" : "top-0"
-      }`}
+      className={`fixed inset-x-0 z-50 transition-all duration-200 ease-in-out ${
+        scrolled
+          ? "bg-cream/95 shadow-[0_4px_30px_-15px_rgba(34,23,16,0.3)]"
+          : "bg-cream/85 shadow-none"
+      } backdrop-blur-md ${offset ? "top-9" : "top-0"}`}
     >
       <nav className={`${containerClasses} flex items-center justify-between py-3`}>
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
@@ -48,17 +58,26 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className={`cursor-pointer font-display text-sm font-semibold uppercase tracking-wide transition-colors hover:text-orange ${
-                isLinkActive(link.href) ? "text-orange" : "text-charcoal/80"
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
+          {navLinks.map((link) => {
+            const active = isLinkActive(link.href);
+            return (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className={`group relative cursor-pointer py-1 font-display text-sm font-semibold uppercase tracking-wide transition-colors duration-150 ease-in-out hover:text-orange ${
+                  active ? "text-orange" : "text-charcoal/80"
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-orange transition-transform duration-200 ease-out group-hover:scale-x-100 ${
+                    active ? "scale-x-100" : ""
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
+            );
+          })}
         </div>
 
         <div className="hidden md:block">

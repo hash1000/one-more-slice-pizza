@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactElement } from "react";
-import { fadeUp, viewportOnce } from "../../../utils/motion";
+import { fadeUp, staggerContainer, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 
 interface WhyItem {
@@ -94,15 +94,18 @@ export function WhyItWorksSection() {
           Quality Pizza. Simple Operation. <span className="text-orange">Maximum Profit.</span>
         </motion.h2>
 
-        <div className="mt-14 flex flex-wrap justify-center gap-8 sm:gap-10">
-          {whyItems.map((item, i) => (
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+          className="mt-14 flex flex-wrap justify-center gap-8 sm:gap-10"
+        >
+          {whyItems.map((item) => (
             <motion.div
               key={item.label}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
               variants={fadeUp}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="flex w-32 flex-col items-center gap-3 text-center sm:w-36"
             >
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-orange">
@@ -113,7 +116,7 @@ export function WhyItWorksSection() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

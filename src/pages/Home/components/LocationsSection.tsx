@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactElement } from "react";
-import { fadeUp, viewportOnce } from "../../../utils/motion";
+import { fadeUp, staggerContainer, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 
 interface LocationItem {
@@ -123,16 +123,19 @@ export function LocationsSection() {
           Perfect For <span className="text-orange">Every Location.</span>
         </motion.h2>
 
-        <div className="mt-14 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
-          {locations.map((item, i) => (
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+          className="mt-14 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4"
+        >
+          {locations.map((item) => (
             <motion.div
               key={item.label}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
               variants={fadeUp}
-              transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
-              className="flex flex-col items-center gap-3 rounded-3xl bg-white p-6 text-center shadow-warm sm:p-8"
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex flex-col items-center gap-3 rounded-3xl bg-white p-6 text-center shadow-warm transition-all duration-200 ease-in-out hover:-translate-y-1 hover:shadow-warm-lg sm:p-8"
             >
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-orange/10 text-orange">
                 {item.icon}
@@ -142,7 +145,7 @@ export function LocationsSection() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import { containerClasses } from "../../../utils/layout";
 
 export function Craving() {
   return (
-    <section id="craving" className="relative bg-cream py-20 sm:py-28">
+    <section id="craving" className="relative scroll-mt-24 bg-cream py-20 sm:py-28">
       <div className={containerClasses}>
         <div className="mx-auto flex max-w-6xl flex-col gap-2">
           {cravingLines.map((line, i) => (

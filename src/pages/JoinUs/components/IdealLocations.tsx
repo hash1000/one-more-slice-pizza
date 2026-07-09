@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { fadeUp, viewportOnce } from "../../../utils/motion";
+import { fadeUp, staggerContainer, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 import { SectionTag } from "../../../components/ui/SectionTag";
 import { idealLocations } from "../../../data/joinUs";
@@ -32,22 +32,25 @@ export function IdealLocations() {
             {idealLocations.body}
           </motion.p>
         </div>
-        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {idealLocations.types.map((type, i) => (
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+          className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+        >
+          {idealLocations.types.map((type) => (
             <motion.div
               key={type}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
               variants={fadeUp}
-              transition={{ duration: 0.5, ease: "easeOut", delay: (i % 4) * 0.08 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="flex items-center gap-2.5 rounded-full border border-cream/10 bg-cream/5 px-4 py-3"
             >
               <span className="h-2 w-2 flex-shrink-0 rounded-full bg-orange" />
               <span className="font-body text-sm font-medium leading-snug text-cream/85">{type}</span>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

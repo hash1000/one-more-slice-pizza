@@ -33,7 +33,7 @@ const secondaryPoints = [
 
 export function BrandValue() {
   return (
-    <section id="why" className="relative overflow-hidden bg-cream-soft py-24 sm:py-32">
+    <section id="why" className="relative scroll-mt-24 overflow-hidden bg-cream-soft py-24 sm:py-32">
       <div className="pointer-events-none absolute -top-32 -right-32 -z-10 h-[28rem] w-[28rem] rounded-full bg-orange/8 blur-[120px]" />
 
       <div className={containerClasses}>
@@ -66,7 +66,7 @@ export function BrandValue() {
             viewport={viewportOnce}
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl bg-white p-8 shadow-warm sm:p-10"
+            className="rounded-3xl bg-white p-8 shadow-warm transition-all duration-200 ease-in-out hover:-translate-y-1 hover:shadow-warm-lg sm:p-10"
           >
             <h3 className="font-display text-2xl font-black text-charcoal sm:text-3xl">
               {differentiators[0].headline}
@@ -95,7 +95,7 @@ export function BrandValue() {
             viewport={viewportOnce}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-3xl bg-charcoal p-8 shadow-warm sm:p-10"
+            className="rounded-3xl bg-charcoal p-8 shadow-warm transition-all duration-200 ease-in-out hover:-translate-y-1 hover:shadow-warm-lg sm:p-10"
           >
             <h3 className="font-display text-2xl font-black text-white sm:text-3xl">
               {differentiators[1].headline}

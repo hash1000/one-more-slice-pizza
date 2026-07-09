@@ -12,9 +12,13 @@ export function Footer() {
         </p>
         <Link
           to="/about"
-          className="font-display text-sm font-semibold uppercase tracking-wide text-cream/60 transition-colors hover:text-orange"
+          className="group relative py-1 font-display text-sm font-semibold uppercase tracking-wide text-cream/60 transition-colors duration-150 ease-in-out hover:text-orange"
         >
           About Us
+          <span
+            className="absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-orange transition-transform duration-200 ease-out group-hover:scale-x-100"
+            aria-hidden="true"
+          />
         </Link>
         <p className="font-body text-sm text-cream/40">
           &copy; {new Date().getFullYear()} One More Slice Pizza. All rights reserved.

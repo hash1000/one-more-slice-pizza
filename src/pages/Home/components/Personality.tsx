@@ -29,7 +29,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 
 export function Personality() {
   return (
-    <section id="personality" className="relative overflow-hidden bg-charcoal py-24 text-cream sm:py-32">
+    <section id="personality" className="relative scroll-mt-24 overflow-hidden bg-charcoal py-24 text-cream sm:py-32">
       <div className="pointer-events-none absolute -bottom-1/2 left-1/2 -z-10 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-orange/10 blur-[140px]" />
 
       <div className={containerClasses}>

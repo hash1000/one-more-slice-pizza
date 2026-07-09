@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { fadeUp, viewportOnce } from "../../../utils/motion";
+import { fadeUp, staggerContainer, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 import type { MenuCategoryData } from "../../../data/menu";
 
@@ -44,13 +44,27 @@ export function MenuCategorySection({ category, isFirst }: MenuCategorySectionPr
           )}
         </motion.div>
         <p className={`mt-3 font-body text-base ${subtitleColor}`}>{category.subtitle}</p>
-        <div className="mt-6 h-1 w-16 rounded-full bg-orange" />
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mt-6 h-1 w-16 origin-left rounded-full bg-orange"
+        />
 
-        <div className="mt-10 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+          className="mt-10 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 lg:grid-cols-4"
+        >
           {category.items.map((item) => (
-            <div
+            <motion.div
               key={item.name}
-              className={`group relative flex min-h-80 flex-col items-center rounded-2xl border ${cardBorder} ${cardBg} px-4 py-6 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-warm-lg`}
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className={`group relative flex min-h-80 flex-col items-center overflow-hidden rounded-2xl border ${cardBorder} ${cardBg} px-4 py-6 text-center shadow-soft transition-all duration-200 ease-in-out hover:-translate-y-1 hover:shadow-warm-lg`}
             >
               {item.badge && (
                 <span className="absolute right-3 top-3 rounded-full bg-charcoal px-2.5 py-1 font-display text-[0.6rem] font-bold uppercase tracking-widest text-cream">
@@ -62,18 +76,18 @@ export function MenuCategorySection({ category, isFirst }: MenuCategorySectionPr
                 alt={item.alt}
                 width={140}
                 height={140}
-                className="h-35 w-35 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-35 w-35 object-contain transition-transform duration-250 ease-in-out group-hover:scale-105"
                 loading="lazy"
                 draggable={false}
               />
               <p className={`mt-4 font-display text-base font-bold ${nameColor}`}>{item.name}</p>
               <p className={`mt-1 line-clamp-2 font-body text-sm leading-snug ${ingredientColor}`}>{item.ingredients}</p>
-              <p className="mt-3 inline-block rounded-full bg-orange px-3 py-1 font-display text-base font-black text-cream shadow-warm">
+              <p className="mt-3 inline-block rounded-full bg-orange px-3 py-1 font-display text-base font-black text-cream shadow-warm transition-[filter] duration-200 ease-in-out group-hover:brightness-105">
                 {item.price}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

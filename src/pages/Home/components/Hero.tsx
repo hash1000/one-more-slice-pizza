@@ -139,9 +139,12 @@ export function Hero() {
             <div className="mt-10 inline-flex flex-col items-center gap-5 sm:flex-row">
               <button
                 onClick={() => navigate("/menu")}
-                className={buttonClasses("primary", "lg")}
+                className={`${buttonClasses("primary", "lg")} inline-flex items-center gap-2`}
               >
                 See the Slices
+                <span className="transition-transform duration-200 ease-in-out group-hover:translate-x-1" aria-hidden="true">
+                  &rarr;
+                </span>
               </button>
 
               {/* <button
