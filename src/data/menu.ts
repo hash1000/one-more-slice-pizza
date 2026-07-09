@@ -19,7 +19,7 @@ import chocolateBliss from "../assets/images/menu/sweet-slices/chocolate-bliss.w
 import churroSupreme from "../assets/images/menu/sweet-slices/churro-supreme.webp";
 
 // Snacks
-import garlicDippers from "../assets/images/menu/snacks/garlic-sticks.png";
+import garlicDippers from "../assets/images/menu/snacks/garlic-sticks.webp";
 
 export interface MenuItem {
   name: string;
