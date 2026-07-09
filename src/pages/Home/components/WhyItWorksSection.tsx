@@ -99,19 +99,19 @@ export function WhyItWorksSection() {
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="mt-14 flex flex-wrap justify-center gap-8 sm:gap-10"
+          className="mt-14 grid grid-cols-1 gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-8 sm:gap-y-10"
         >
           {whyItems.map((item) => (
             <motion.div
               key={item.label}
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="flex w-32 flex-col items-center gap-3 text-center sm:w-36"
+              className="flex flex-row items-center gap-4 text-left sm:w-36 sm:flex-col sm:gap-3 sm:text-center"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-orange">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/10 text-orange">
                 {item.icon}
               </span>
-              <p className="font-display text-sm font-bold uppercase tracking-wide text-white">
+              <p className="font-display text-lg font-bold uppercase tracking-wide text-white sm:text-sm">
                 {item.label}
               </p>
             </motion.div>

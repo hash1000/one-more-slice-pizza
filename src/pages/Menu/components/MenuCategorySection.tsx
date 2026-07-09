@@ -52,34 +52,34 @@ export function MenuCategorySection({ category, isFirst, sectionIndex }: MenuCat
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="mt-5 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4"
+          className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:grid-cols-4"
         >
           {category.items.map((item) => (
             <motion.div
               key={item.name}
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className={`menu-card group relative flex h-80 cursor-pointer flex-col items-center overflow-hidden rounded-2xl border ${cardBorder} ${cardBg} px-4 py-4 text-center shadow-soft sm:h-96`}
+              className={`menu-card group relative flex h-[26rem] cursor-pointer flex-col items-center overflow-hidden rounded-2xl border ${cardBorder} ${cardBg} px-4 py-5 text-center shadow-soft sm:h-80 sm:py-4 lg:h-96`}
             >
               {item.badge && (
                 <span className="absolute right-3 top-3 z-10 rounded-full bg-charcoal px-2.5 py-1 font-display text-[0.6rem] font-bold uppercase tracking-widest text-cream">
                   {item.badge}
                 </span>
               )}
-              <div className="flex h-[45%] w-[62%] shrink-0 items-center justify-center overflow-visible">
+              <div className="flex h-[52%] w-[78%] shrink-0 items-center justify-center overflow-visible sm:h-[45%] sm:w-[62%]">
                 <img
                   src={item.image}
                   alt={item.alt}
                   width={150}
                   height={250}
-                  className="slice-diagonal h-[72%] w-[72%] object-contain"
+                  className="slice-diagonal h-[80%] w-[80%] object-contain sm:h-[72%] sm:w-[72%]"
                   loading="lazy"
                   decoding="async"
                   draggable={false}
                 />
               </div>
-              <p className={`menu-card-title mt-3 font-display text-xl font-bold leading-snug ${nameColor}`}>{item.name}</p>
-              <p className={`mt-1 line-clamp-3 font-body text-base leading-relaxed ${ingredientColor}`}>{item.ingredients}</p>
+              <p className={`menu-card-title mt-3 font-display text-[1.375rem] font-bold leading-snug sm:text-xl ${nameColor}`}>{item.name}</p>
+              <p className={`mt-1 line-clamp-3 font-body text-[1.0625rem] leading-relaxed sm:text-base ${ingredientColor}`}>{item.ingredients}</p>
               {/* <span className="mt-auto inline-flex items-center gap-1 rounded-full bg-orange/10 px-3 py-1 font-display text-[0.65rem] font-bold uppercase tracking-widest text-orange-dark">
                 Halal available
               </span> */}

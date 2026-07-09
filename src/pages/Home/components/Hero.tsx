@@ -211,22 +211,24 @@ export function Hero() {
           </video>
         </motion.div>
       </div>
-      <div className=" mt-8 grid grid-cols-2 border-charcoal/10 pt-8 sm:grid-cols-4">
+      <div className="mt-8 grid grid-cols-1 gap-4 border-charcoal/10 pt-8 sm:gap-0 md:grid-cols-2 md:gap-y-4 lg:grid-cols-4">
         {features.map((feature, index) => (
           <div
             key={feature.label}
             className={`flex items-center justify-center gap-4 px-4 py-2 ${
-              index !== 0 ? "sm:border-l sm:border-charcoal/15" : ""
+              index % 2 !== 0 ? "md:border-l md:border-charcoal/15" : ""
+            } ${index !== 0 && index !== 2 ? "lg:border-l lg:border-charcoal/15" : ""} ${
+              index === 2 ? "md:border-l-0" : ""
             }`}
           >
             <img
               src={feature.icon}
               alt=""
               aria-hidden="true"
-              className="h-12 w-12 shrink-0 object-contain"
+              className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12"
             />
             <div className="text-left">
-              <p className="font-display text-sm font-bold uppercase tracking-wide text-charcoal">
+              <p className="font-display text-lg font-bold uppercase tracking-wide text-charcoal sm:text-sm">
                 {feature.label}
               </p>
               <p className="text-base leading-snug text-muted">

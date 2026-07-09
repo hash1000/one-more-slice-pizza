@@ -128,19 +128,19 @@ export function LocationsSection() {
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="mt-14 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4"
+          className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8"
         >
           {locations.map((item) => (
             <motion.div
               key={item.label}
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="location-card flex cursor-pointer flex-col items-center gap-3 rounded-3xl bg-white p-6 text-center shadow-warm sm:p-8"
+              className="location-card flex cursor-pointer flex-row items-center gap-4 rounded-3xl bg-white p-5 text-left shadow-warm sm:flex-col sm:p-6 sm:text-center lg:p-8"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-orange/10 text-orange">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-orange/10 text-orange sm:h-14 sm:w-14">
                 {item.icon}
               </span>
-              <p className="font-display text-sm font-bold uppercase tracking-wide text-charcoal">
+              <p className="font-display text-lg font-bold uppercase tracking-wide text-charcoal sm:text-sm">
                 {item.label}
               </p>
             </motion.div>
