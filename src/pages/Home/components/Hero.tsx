@@ -100,7 +100,7 @@ export function Hero() {
       }
     };
 
-    applyMotionPreference();
+    applyMotionPreference(); 
     reduceMotionQuery.addEventListener("change", applyMotionPreference);
     return () =>
       reduceMotionQuery.removeEventListener("change", applyMotionPreference);
