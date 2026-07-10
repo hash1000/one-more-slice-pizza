@@ -87,7 +87,16 @@ export function Hero() {
         video.pause();
         video.currentTime = 0;
       } else {
-        video.play().catch(() => {});
+        // Safari rejects play() before enough data is buffered; retry on canplay
+        video.play().catch(() => {
+          video.addEventListener(
+            "canplay",
+            () => {
+              if (!reduceMotionQuery.matches) video.play().catch(() => {});
+            },
+            { once: true },
+          );
+        });
       }
     };
 
@@ -190,12 +199,6 @@ export function Hero() {
             className="pointer-events-none absolute h-56 w-56 rounded-full bg-orange/[0.07] blur-[70px] sm:h-80 sm:w-80 sm:blur-[100px] lg:h-[28rem] lg:w-[28rem] lg:blur-[120px]"
           />
 
-          {/* Soft elliptical drop shadow under the pizza */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-[8%] h-10 w-2/3 rounded-full bg-[#2B1B12]/20 blur-2xl sm:h-14 lg:bottom-[12%]"
-          />
-
           <video
             ref={videoRef}
             className="relative aspect-square w-full object-contain"
@@ -203,11 +206,12 @@ export function Hero() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             poster="/videos/hero-poster.jpg"
           >
-            <source src="/videos/hero-animation.webm" type="video/webm" />
-            <source src="/videos/hero-animation.mp4" type="video/mp4" />
+            {/* mp4 first: Safari claims WebM support but decodes VP9 unreliably */}
+            <source src="/videos/hero-animation.mp4" type='video/mp4; codecs="avc1.42E01E"' />
+            <source src="/videos/hero-animation.webm" type='video/webm; codecs="vp9"' />
           </video>
         </motion.div>
       </div>
