@@ -1,5 +1,6 @@
 import logoFull from "../../assets/images/brand/logo.webp";
-import logoMark from "../../assets/images/brand/logo-mark.png";
+// import logoMark from "../../assets/images/brand/logo-mark.png";
+import FooterLogo from "../../assets/images/brand/footer-logo.svg";
 
 interface LogoProps {
   /** "plain" for light backgrounds, "badge" for dark backgrounds */
@@ -10,9 +11,7 @@ interface LogoProps {
 export function Logo({ variant = "plain", className = "" }: LogoProps) {
   if (variant === "badge") {
     return (
-      <span className={`inline-flex shrink-0 items-center justify-center rounded-full bg-white shadow-sm ${className}`}>
-        <img src={logoMark} alt="One More Slice Pizza" className="h-[56%] w-[56%] object-contain" />
-      </span>
+    <img src={FooterLogo} alt="One More Slice Pizza" className={className} />
     );
   }
 

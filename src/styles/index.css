@@ -60,13 +60,8 @@
     scroll-behavior: auto !important;
   }
 
-  .menu-card:hover,
   .location-card:hover {
     transform: none !important;
-  }
-
-  .slice-diagonal {
-    transform: rotate(-35deg) !important;
   }
 }
 
@@ -85,35 +80,16 @@
     text-wrap: balance;
   }
 
-  .slice-diagonal {
-    transform: rotate(-35deg);
-    transition: transform 300ms ease-out;
-  }
-
-  .menu-card,
   .location-card {
     transition:
       transform 250ms ease-out,
       box-shadow 250ms ease-out;
   }
 
-  .menu-card .menu-card-title {
-    transition: color 150ms ease-out;
-  }
-
   @media (hover: hover) {
-    .menu-card:hover,
     .location-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-warm-lg);
-    }
-
-    .menu-card:hover .slice-diagonal {
-      transform: rotate(-39deg) scale(1.1);
-    }
-
-    .menu-card:hover .menu-card-title {
-      color: var(--color-orange);
     }
   }
 }

@@ -27,7 +27,6 @@ export interface MenuItem {
   image: string;
   alt: string;
   price: string;
-  badge?: string;
 }
 
 export interface MenuCategoryData {
@@ -41,45 +40,54 @@ export interface MenuCategoryData {
 
 export const menuCategories: MenuCategoryData[] = [
   {
-    id: "signature-pizzas",
-    tabLabel: "Signature Pizzas",
-    title: "Signature Pizzas",
+    id: "signature-slices",
+    tabLabel: "Signature Slices",
+    title: "Signature Slices",
     subtitle: "The classics. Made the right way.",
     columns: 4,
     items: [
       { name: "Cheese", ingredients: "Melty five-cheese blend on our signature sauce and golden crust.", image: cheese, alt: "Cheese pizza slice", price: "$X.XX" },
       { name: "Pepperoni", ingredients: "Loaded edge-to-edge with crispy pepperoni over melted five-cheese blend.", image: pepperoni, alt: "Pepperoni pizza slice", price: "$X.XX" },
       { name: "Sausage", ingredients: "Savory Italian sausage crumbles over rich sauce and melted cheese.", image: sausage, alt: "Sausage pizza slice", price: "$X.XX" },
-      { name: "Veggie", ingredients: "Red onions, green bell peppers, and mushrooms over bubbling cheese.", image: veggie, alt: "Veggie pizza slice", price: "$X.XX" },
-      { name: "Meat Lovers", ingredients: "Pepperoni, Italian sausage, and smoky bacon piled on melted five-cheese blend.", image: meatLovers, alt: "Meat Lovers pizza slice", price: "$X.XX" },
+      { name: "Meat Lover", ingredients: "Pepperoni, Italian sausage, and smoky bacon piled on melted five-cheese blend.", image: meatLovers, alt: "Meat Lover pizza slice", price: "$X.XX" },
       { name: "BBQ Chicken", ingredients: "Grilled chicken and red onions on sweet & smoky BBQ sauce.", image: bbqChicken, alt: "BBQ Chicken pizza slice", price: "$X.XX" },
       { name: "Buffalo Ranch", ingredients: "Grilled chicken on spicy buffalo sauce, finished with a cool ranch drizzle.", image: buffaloRanch, alt: "Buffalo Ranch pizza slice", price: "$X.XX" },
       { name: "Chicken Supreme", ingredients: "Grilled chicken, mushrooms, bell peppers, and red onions on classic sauce.", image: chickenSupreme, alt: "Chicken Supreme pizza slice", price: "$X.XX" },
+      { name: "Veggie", ingredients: "Red onions, green bell peppers, and mushrooms over bubbling cheese.", image: veggie, alt: "Veggie pizza slice", price: "$X.XX" },
     ],
   },
   {
-    id: "breakfast-pizza",
-    tabLabel: "Breakfast Pizza",
-    title: "Breakfast Pizza",
+    id: "breakfast-slices",
+    tabLabel: "Breakfast Slices",
+    title: "Breakfast Slices",
     subtitle: "A hearty start. In every slice.",
     columns: 4,
     items: [
       { name: "Egg & Cheese", ingredients: "Fluffy scrambled eggs over creamy cheddar sauce and five-cheese blend.", image: eggCheese, alt: "Egg and cheese breakfast pizza", price: "$X.XX" },
-      { name: "Egg, Bacon & Cheese", ingredients: "Scrambled eggs and crispy bacon over creamy cheddar cheese sauce.", image: eggBaconCheese, alt: "Egg, bacon, and cheese breakfast pizza", price: "$X.XX" },
-      { name: "Egg, Sausage & Cheese", ingredients: "Scrambled eggs and savory sausage crumbles over creamy cheddar sauce.", image: eggSausageCheese, alt: "Egg, sausage, and cheese breakfast pizza", price: "$X.XX" },
+      { name: "Egg n Sausage", ingredients: "Scrambled eggs and savory sausage crumbles over creamy cheddar sauce.", image: eggSausageCheese, alt: "Egg and sausage breakfast pizza", price: "$X.XX" },
+      { name: "Egg n Bacon", ingredients: "Scrambled eggs and crispy bacon over creamy cheddar cheese sauce.", image: eggBaconCheese, alt: "Egg and bacon breakfast pizza", price: "$X.XX" },
     ],
   },
   {
     id: "sweet-slices",
-    tabLabel: "Sweet Slices & Snacks",
-    title: "Sweet Slices & Snacks",
+    tabLabel: "Sweet Slices",
+    title: "Sweet Slices",
     subtitle: "Dessert worth saving room for.",
     columns: 4,
     items: [
       { name: "Caramel Apple", ingredients: "Warm apple pie filling on cinnamon-sugar crust with cream cheese icing and caramel drizzle.", image: caramelApple, alt: "Caramel Apple sweet slice", price: "$X.XX" },
-      { name: "Chocolate Bliss", ingredients: "Warm chocolate hazelnut spread with toasted marshmallows, chocolate chips, and powdered sugar.", image: chocolateBliss, alt: "Chocolate Bliss sweet slice", price: "$X.XX" },
       { name: "Churro Supreme", ingredients: "Caramelized cinnamon-sugar crust drizzled with cream cheese icing and caramel.", image: churroSupreme, alt: "Churro Supreme sweet slice", price: "$X.XX" },
-      { name: "Cheesy Garlic Dippers", ingredients: "Golden-baked cheesy garlic crust cut into 12 dippers, served with dipping sauce.", image: garlicDippers, alt: "Cheesy Garlic Dippers", price: "$X.XX", badge: "SNACK" },
+      { name: "Chocolate Bliss", ingredients: "Warm chocolate hazelnut spread with toasted marshmallows, chocolate chips, and powdered sugar.", image: chocolateBliss, alt: "Chocolate Bliss sweet slice", price: "$X.XX" },
+    ],
+  },
+  {
+    id: "snacks",
+    tabLabel: "Snacks",
+    title: "Snacks",
+    subtitle: "Something on the side.",
+    columns: 4,
+    items: [
+      { name: "Cheesy Garlic Dippers", ingredients: "Golden-baked cheesy garlic crust cut into 12 dippers, served with dipping sauce.", image: garlicDippers, alt: "Cheesy Garlic Dippers", price: "$X.XX" },
     ],
   },
 ];

@@ -1,73 +1,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import heroBigSlice from "../../../assets/images/hero/hero-big-slice.svg";
-import icon1 from "../../../assets/images/hero/icon1.png";
-import icon2 from "../../../assets/images/hero/icon2.png";
-import icon3 from "../../../assets/images/hero/icon3.png";
-import icon4 from "../../../assets/images/hero/icon4.png";
+import heroBigSlice from "../../../assets/images/hero/hero-text.svg";
+import { Container } from "../../../components/layout/Container";
 import { containerClasses } from "../../../utils/layout";
 import { buttonClasses } from "../../../utils/buttonStyles";
 import { fadeUp, viewportOnce } from "../../../utils/motion";
-
-// To add/remove slices, just add/remove entries here (and drop the matching
-// file into src/assets/slices/). The slider cycles through them in order.
-// import sliceBbqChicken from "../../../assets/slices/BBQ Chicken.png";
-// import sliceBuffaloRanch from "../../../assets/slices/Buffalo Ranch.png";
-// import sliceCaramelApple from "../../../assets/slices/Caramel Apple Sweet.png";
-// import sliceCheese from "../../../assets/slices/Cheese.png";
-// import sliceChickenSupreme from "../../../assets/slices/Chicken Supreme.png";
-// import sliceChocolateBliss from "../../../assets/slices/Chocolate Bliss Sweet.png";
-// import sliceChurroSupreme from "../../../assets/slices/Churro Supreme Sweet.png";
-// import sliceEggBacon from "../../../assets/slices/Egg n Bacon.png";
-// import sliceEggCheese from "../../../assets/slices/Egg n Cheese.png";
-// import sliceEggSausage from "../../../assets/slices/Egg n Sausage.png";
-// import sliceMeatLover from "../../../assets/slices/Meat Lover.png";
-// import slicePepperoni from "../../../assets/slices/Pepperoni.png";
-// import sliceSausage from "../../../assets/slices/Sausage.png";
-// import sliceVeggie from "../../../assets/slices/Veggie.png";
-
-// const slices = [
-//   slicePepperoni,
-//   sliceBbqChicken,
-//   sliceBuffaloRanch,
-//   sliceChickenSupreme,
-//   sliceMeatLover,
-//   sliceSausage,
-//   sliceVeggie,
-//   sliceCheese,
-//   sliceEggBacon,
-//   sliceEggCheese,
-//   sliceEggSausage,
-//   sliceCaramelApple,
-//   sliceChocolateBliss,
-//   sliceChurroSupreme,
-// ];
-
-// const SLICE_INTERVAL_MS = 3200;
-
-const features = [
-  {
-    label: "Big Size",
-    description: "Generous slices in every order.",
-    icon: icon1,
-  },
-  {
-    label: "Great Taste",
-    description: "Bold flavors made with quality ingredients.",
-    icon: icon2,
-  },
-  {
-    label: "Made Fresh",
-    description: "Hot, fresh and made to order.",
-    icon: icon3,
-  },
-  {
-    label: "Made For You",
-    description: "Your satisfaction is our priority.",
-    icon: icon4,
-  },
-];
 
 export function Hero() {
   const navigate = useNavigate();
@@ -100,25 +38,14 @@ export function Hero() {
       }
     };
 
-    applyMotionPreference(); 
+    applyMotionPreference();
     reduceMotionQuery.addEventListener("change", applyMotionPreference);
     return () =>
       reduceMotionQuery.removeEventListener("change", applyMotionPreference);
   }, []);
 
-  // useEffect(() => {
-  //   const id = setInterval(() => {
-  //     setActiveSlice((prev) => (prev + 1) % slices.length);
-  //   }, SLICE_INTERVAL_MS);
-
-  //   return () => clearInterval(id);
-  // }, []);
-
   return (
-    <section
-      id="hero"
-      className="relative w-full overflow-hidden bg-[#FAF7F2] pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-20 sm:ps-4 lg:pe-4"
-    >
+    <Container id="hero">
       <div
         className={`${containerClasses} grid grid-cols-1 items-center lg:grid-cols-[40fr_60fr] pt-4 pb-16 sm:pb-20 lg:pb-24`}
       >
@@ -135,49 +62,23 @@ export function Hero() {
               alt="Our Promise Is Simple: Big Slice"
               className="mx-auto w-full max-w-[39rem] lg:mx-0"
             />
-            <p className="mt-6 w-fit font-display text-3xl font-bold uppercase tracking-wide text-charcoal sm:text-4xl lg:text-5xl">
-              More Pizza. More Satisfaction.
-            </p>
 
-            <p className="mx-auto mt-4 max-w-[48ch] text-xl text-muted lg:mx-0">
-              We serve{" "}
-              <span className="font-semibold text-orange">big slices</span>{" "}
-              packed with flavor and made to satisfy.
+            <p className=" mt-4 max-w-[48ch] text-xl text-muted lg:mx-0">
+              Fresh oven hot pizza in oversized slices.
+              <p className="max-w-[48ch] text-xl text-muted lg:mx-0">
+                Fifteen varieties, made throughout
+              </p>
+              <p className="max-w-[48ch] text-xl text-muted lg:mx-0">
+                the day, everyday.
+              </p>
             </p>
-
             <div className="mt-10 inline-flex flex-col items-center gap-5 sm:flex-row">
               <button
                 onClick={() => navigate("/menu")}
                 className={`${buttonClasses("primary", "lg")} inline-flex items-center gap-2`}
               >
                 See the Slices
-                <span className="transition-transform duration-200 ease-in-out group-hover:translate-x-1" aria-hidden="true">
-                  &rarr;
-                </span>
               </button>
-
-              {/* <button
-                onClick={() =>
-                  document
-                    .querySelector("#our-story")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group flex cursor-pointer items-center gap-3 font-display text-base font-bold uppercase tracking-wide text-charcoal"
-              >
-                <span className="flex h-[4.125rem] w-[4.125rem] items-center justify-center rounded-full border-2 border-charcoal transition-colors group-hover:bg-charcoal group-hover:text-cream">
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-6 w-6"
-                    fill="currentColor"
-                  >
-                    <path d="M12 2 2 20h20L12 2Zm0 4.2L17.5 18h-11L12 6.2Z" />
-                    <circle cx="12" cy="15" r="1.1" />
-                    <circle cx="10" cy="12" r="0.9" />
-                    <circle cx="14" cy="12.5" r="0.9" />
-                  </svg>
-                </span>
-                Build your own Pizza
-              </button> */}
             </div>
           </div>
 
@@ -210,38 +111,17 @@ export function Hero() {
             poster="/videos/hero-poster.jpg"
           >
             {/* mp4 first: Safari claims WebM support but decodes VP9 unreliably */}
-            <source src="/videos/hero-animation.mp4" type='video/mp4; codecs="avc1.42E01E"' />
-            <source src="/videos/hero-animation.webm" type='video/webm; codecs="vp9"' />
+            <source
+              src="/videos/hero-animation.mp4"
+              type='video/mp4; codecs="avc1.42E01E"'
+            />
+            <source
+              src="/videos/hero-animation.webm"
+              type='video/webm; codecs="vp9"'
+            />
           </video>
         </motion.div>
       </div>
-      <div className="mt-8 grid grid-cols-1 gap-4 border-charcoal/10 pt-8 sm:gap-0 md:grid-cols-2 md:gap-y-4 lg:grid-cols-4">
-        {features.map((feature, index) => (
-          <div
-            key={feature.label}
-            className={`flex items-center justify-center gap-4 px-4 py-2 ${
-              index % 2 !== 0 ? "md:border-l md:border-charcoal/15" : ""
-            } ${index !== 0 && index !== 2 ? "lg:border-l lg:border-charcoal/15" : ""} ${
-              index === 2 ? "md:border-l-0" : ""
-            }`}
-          >
-            <img
-              src={feature.icon}
-              alt=""
-              aria-hidden="true"
-              className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12"
-            />
-            <div className="text-left">
-              <p className="font-display text-lg font-bold uppercase tracking-wide text-charcoal sm:text-sm">
-                {feature.label}
-              </p>
-              <p className="text-base leading-snug text-muted">
-                {feature.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+    </Container>
   );
 }

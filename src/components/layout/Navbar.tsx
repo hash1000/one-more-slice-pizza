@@ -5,6 +5,7 @@ import { navLinks } from "../../data/navigation";
 import { buttonClasses } from "../../utils/buttonStyles";
 import { containerClasses } from "../../utils/layout";
 import { Logo } from "../../components/ui/Logo";
+import navIcon from "../../assets/images/hero/nav-icon.svg";
 
 export function Navbar({ offset = false }: { offset?: boolean }) {
   const [open, setOpen] = useState(false);
@@ -89,17 +90,14 @@ export function Navbar({ offset = false }: { offset?: boolean }) {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`group relative cursor-pointer py-1 font-display text-base font-semibold uppercase tracking-wide transition-colors duration-150 ease-in-out hover:text-orange ${
+                className={`group relative flex cursor-pointer flex-col items-center gap-1 py-1 font-display text-base font-semibold uppercase tracking-wide transition-colors duration-150 ease-in-out hover:text-orange ${
                   active ? "text-orange" : "text-charcoal/80"
                 }`}
               >
                 {link.label}
-                <span
-                  className={`absolute inset-x-0 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-orange transition-transform duration-200 ease-out group-hover:scale-x-100 ${
-                    active ? "scale-x-100" : ""
-                  }`}
-                  aria-hidden="true"
-                />
+                {active && (
+                  <img src={navIcon} alt="" className="h-4 w-4 absolute top-6" aria-hidden="true" />
+                )}
               </button>
             );
           })}
