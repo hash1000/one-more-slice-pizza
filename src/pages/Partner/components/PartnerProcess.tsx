@@ -1,47 +1,89 @@
+import { Fragment } from "react";
 import { motion } from "framer-motion";
 import {
-  HiOutlineEnvelope,
-  HiOutlineUserCircle,
-  HiOutlinePhone,
-  HiOutlineDocumentText,
-} from "react-icons/hi2";
-import { FaHandshake } from "react-icons/fa6";
+  ArrowDown,
+  ArrowRight,
+  Handshake,
+  Headset,
+  Info,
+  Mail,
+  Phone,
+  type LucideIcon,
+} from "lucide-react";
 import { fadeUp, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
 
 interface ProcessStep {
-  icon: typeof HiOutlineEnvelope;
+  icon: LucideIcon;
   title: string;
   body: string;
+  dark: boolean;
 }
 
 const steps: ProcessStep[] = [
   {
-    icon: HiOutlineEnvelope,
+    icon: Mail,
     title: "We Receive Your Information",
     body: "Your responses help us understand your business and goals.",
+    dark: true,
   },
   {
-    icon: HiOutlineUserCircle,
+    icon: Headset,
     title: "Our Team Reviews Your Details",
     body: "We match you with the right team member.",
+    dark: false,
   },
   {
-    icon: HiOutlinePhone,
+    icon: Phone,
     title: "Personal Follow-Up",
     body: "We'll contact you within 1 business day to start the conversation.",
+    dark: true,
   },
   {
-    icon: HiOutlineDocumentText,
+    icon: Info,
     title: "Customized Information",
     body: "Receive the information that's most relevant to your opportunity.",
-  },
-  {
-    icon: FaHandshake,
-    title: "Let's Build Your Future Together",
-    body: "We're here to help you grow with One More Slice.",
+    dark: false,
   },
 ];
+
+const finalStep: ProcessStep = {
+  icon: Handshake,
+  title: "Let's Build Your Future Together",
+  body: "We're here to help you grow with One More Slice.",
+  dark: true,
+};
+
+function StepCard({ step }: { step: ProcessStep }) {
+  const Icon = step.icon;
+  return (
+    <div
+      className={`flex h-full flex-col rounded-2xl p-6 ${
+        step.dark ? "bg-charcoal text-cream" : "bg-orange text-charcoal"
+      }`}
+    >
+      <Icon
+        className={step.dark ? "text-cream" : "text-charcoal"}
+        size={32}
+        aria-hidden="true"
+      />
+      <h3
+        className={`mt-4 font-display text-lg font-black leading-snug uppercase ${
+          step.dark ? "text-orange" : "text-charcoal"
+        }`}
+      >
+        {step.title}
+      </h3>
+      <p
+        className={`mt-2 font-body text-sm leading-relaxed ${
+          step.dark ? "text-cream/90" : "text-charcoal/80"
+        }`}
+      >
+        {step.body}
+      </p>
+    </div>
+  );
+}
 
 export function PartnerProcess() {
   return (
@@ -57,39 +99,84 @@ export function PartnerProcess() {
         >
           What Happens Next
         </motion.h2>
-        <div className="mx-auto mt-14 grid max-w-6xl gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-6">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOnce}
-                variants={fadeUp}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="relative flex flex-col items-center text-center"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange/10 text-orange">
-                  <Icon className="h-8 w-8" aria-hidden="true" />
-                </div>
-                <h3 className="mt-4 font-display text-base font-bold uppercase tracking-wide text-charcoal">
-                  {step.title}
-                </h3>
-                <p className="mt-2 font-body text-base leading-relaxed text-muted">
-                  {step.body}
-                </p>
-                {index < steps.length - 1 && (
-                  <span
-                    className="pointer-events-none absolute right-[-1.5rem] top-8 hidden text-orange/40 lg:block"
-                    aria-hidden="true"
+
+        <div className="mx-auto mt-14 max-w-6xl">
+          {/* Desktop: 4-card row with arrows, then an L-connector into the wide 5th card */}
+          <div className="hidden lg:block">
+            <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-stretch gap-3">
+              {steps.map((step, index) => (
+                <Fragment key={step.title}>
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                    variants={fadeUp}
+                    transition={{ duration: 0.6, delay: index * 0.08 }}
                   >
-                    &#8594;
-                  </span>
+                    <StepCard step={step} />
+                  </motion.div>
+                  {index < steps.length - 1 && (
+                    <ArrowRight
+                      className="self-center text-charcoal/50"
+                      size={18}
+                      aria-hidden="true"
+                    />
+                  )}
+                </Fragment>
+              ))}
+            </div>
+
+            <div className="relative mt-6">
+              <div className="grid grid-cols-4">
+                <div />
+                <div />
+                <div />
+                <div className="mx-auto h-8 w-px bg-charcoal/25" />
+              </div>
+              <div className="relative h-8">
+                <div className="absolute top-0 right-[12.5%] left-1/2 h-px bg-charcoal/25" />
+                <div className="absolute top-0 right-[12.5%] h-8 w-px bg-charcoal/25" />
+                <ArrowDown
+                  className="absolute top-5 left-1/2 -translate-x-1/2 text-charcoal/50"
+                  size={16}
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.32 }}
+              className="mx-auto max-w-lg"
+            >
+              <StepCard step={finalStep} />
+            </motion.div>
+          </div>
+
+          {/* Mobile / tablet: stacked cards with simple down arrows */}
+          <div className="flex flex-col gap-4 lg:hidden">
+            {[...steps, finalStep].map((step, index, all) => (
+              <div key={step.title}>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={viewportOnce}
+                  variants={fadeUp}
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
+                >
+                  <StepCard step={step} />
+                </motion.div>
+                {index < all.length - 1 && (
+                  <div className="flex justify-center py-2">
+                    <ArrowDown className="text-charcoal/40" size={18} aria-hidden="true" />
+                  </div>
                 )}
-              </motion.div>
-            );
-          })}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

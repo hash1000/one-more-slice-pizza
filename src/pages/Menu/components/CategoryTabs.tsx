@@ -25,26 +25,32 @@ export function CategoryTabs({ activeId, onSelect }: CategoryTabsProps) {
       }`}
     >
       <div className={containerClasses}>
-        <div className="scrollbar-none my-2 flex snap-x snap-mandatory items-center gap-1 overflow-x-auto rounded-full bg-orange p-1 shadow-warm sm:justify-center">
-          {menuCategories.map((cat) => {
+        <div className="scrollbar-none my-2 flex snap-x snap-mandatory items-stretch justify-evenly gap-1 overflow-x-auto rounded-md bg-orange p-1 shadow-warm sm:justify-center">
+          {menuCategories.map((cat, index) => {
             const isActive = cat.id === activeId;
+            const isLast = index === menuCategories.length - 1;
             return (
-              <button
-                key={cat.id}
-                onClick={() => onSelect(cat.id)}
-                className={`relative shrink-0 snap-start cursor-pointer whitespace-nowrap rounded-full px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-white transition-colors sm:px-6 sm:text-base ${
-                  isActive ? "" : "hover:text-white/80"
-                }`}
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId="activeMenuTab"
-                    className="absolute inset-0 -z-10 rounded-full bg-orange-dark"
-                    transition={{ type: "spring", stiffness: 500, damping: 40 }}
-                  />
+              <div key={cat.id} className="flex flex-1 shrink-0 snap-start items-stretch justify-center sm:flex-none">
+                <button
+                  onClick={() => onSelect(cat.id)}
+                  className={`relative flex-1 cursor-pointer whitespace-nowrap rounded-sm px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-white transition-colors sm:flex-none sm:px-6 sm:text-base ${
+                    isActive ? "" : "hover:text-white/80"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeMenuTab"
+                      className="absolute inset-0 -z-10 rounded-sm bg-orange-dark"
+                      transition={{ type: "spring", stiffness: 500, damping: 40 }}
+                    />
+                  )}
+                  {cat.tabLabel}
+                </button>
+
+                {!isLast && (
+                  <span className="my-auto ml-1 h-4 w-0.5 shrink-0 self-center bg-white" aria-hidden="true" />
                 )}
-                {cat.tabLabel}
-              </button>
+              </div>
             );
           })}
         </div>

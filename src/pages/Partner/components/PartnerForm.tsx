@@ -85,10 +85,31 @@ export function PartnerForm() {
     }
   };
 
+  const stepNumber = step === "qualifying" ? 1 : step === "contact" ? 2 : null;
+
   return (
     <section id="partner-form" className="bg-cream-soft py-20 sm:py-28">
       <div className={containerClasses}>
         <div className="mx-auto max-w-2xl">
+          {stepNumber !== null && (
+            <div className="mb-6 flex items-center justify-center gap-3">
+              <span className="font-display text-xs font-bold uppercase tracking-widest text-charcoal/50">
+                Step {stepNumber} of 2
+              </span>
+              <div className="flex gap-1.5">
+                <span
+                  className={`h-1.5 w-8 rounded-full transition-colors ${
+                    stepNumber >= 1 ? "bg-orange" : "bg-charcoal/10"
+                  }`}
+                />
+                <span
+                  className={`h-1.5 w-8 rounded-full transition-colors ${
+                    stepNumber >= 2 ? "bg-orange" : "bg-charcoal/10"
+                  }`}
+                />
+              </div>
+            </div>
+          )}
           <AnimatePresence mode="wait">
             {step === "qualifying" && (
               <motion.div

@@ -53,10 +53,13 @@ export function OurStory() {
   }, []);
 
   return (
-    <Container id="hero" className="bg-white! pt-28! pb-16! sm:pt-32! lg:pt-32! lg:pb-24!">
-      <section className="relative overflow-hidden">
+    <Container
+      id="hero"
+      className="bg-white! flex min-h-[calc(100vh-100px)]! flex-col justify-center pt-24! pb-10! sm:min-h-[calc(100vh-96px)]! sm:pt-28! sm:pb-12! lg:pb-16!"
+    >
+      <section className="relative">
         <div
-          className={`${containerClasses} grid grid-cols-1 items-center gap-12 md:grid-cols-2 lg:grid-cols-[35fr_75fr] lg:gap-8`}
+          className={`${containerClasses} flex items-center gap-10  md:gap-12  lg:gap-8`}
         >
           {/* Left: copy – 35% */}
           <motion.div
@@ -65,9 +68,9 @@ export function OurStory() {
             viewport={viewportOnce}
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="order-2 lg:order-1"
+            className="basis-[45%] flex flex-col items-center gap-6 text-center order-1 lg:items-start lg:gap-6 lg:text-left xl:gap-8"
           >
-            <span className="relative inline-block font-display text-lg font-extrabold tracking-tight text-orange sm:text-xl">
+            <span className="relative mt-2 inline-block font-display text-3xl font-extrabold tracking-tight text-orange sm:text-4xl lg:mt-0 lg:text-5xl xl:text-7xl">
               Our Story
               <svg
                 className="absolute -bottom-2 left-0 w-full text-orange"
@@ -85,13 +88,13 @@ export function OurStory() {
               </svg>
             </span>
 
-            <h1 className="mt-6 font-display text-3xl font-black leading-tight tracking-tight text-charcoal sm:text-4xl lg:text-5xl">
-              Pizza Should Be <br />
-              <span className="text-orange">Bigger, Better</span> and <br />
-              Worth Coming Back for
+            <h1 className="font-display text-3xl font-black leading-tight tracking-tight text-charcoal sm:text-4xl lg:text-4xl xl:text-6xl">
+              Pizza Should Be{" "}
+              <span className="text-orange">Bigger, Better</span> and Worth
+              Coming Back for
             </h1>
 
-            <p className="mt-6 max-w-lg font-body text-base leading-relaxed text-muted">
+            <p className="max-w-lg font-body text-base leading-relaxed text-muted sm:text-lg">
               One More Slice was built around a simple idea: everyday pizza
               should still feel like something special. We serve oversized,
               satisfying slices with bold flavor, quality ingredients and the
@@ -104,7 +107,6 @@ export function OurStory() {
               viewport={viewportOnce}
               variants={fadeUp}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              className="mt-8"
             >
               <Button variant="secondary" size="md" className="rounded-full!">
                 Explore the Menu
@@ -114,11 +116,11 @@ export function OurStory() {
 
           {/* Right: pizza visual – 65%, controlled size */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 24 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 1.02, y: 24 }}
+            whileInView={{ opacity: 1, scale: 1.5, y: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="relative order-1 mx-auto flex aspect-square w-full max-w-[280px] items-center justify-center sm:max-w-[360px] lg:order-2 lg:max-w-[480px] xl:max-w-[520px]"
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="relative basis-[55%] mx-auto flex aspect-square w-full max-w-65 items-center justify-center sm:max-w-80 md:max-w-90 order-2 lg:max-w-90 xl:max-w-120 2xl:max-w-130"
           >
             {/* Ambient glow */}
             <motion.div

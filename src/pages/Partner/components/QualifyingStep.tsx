@@ -1,3 +1,4 @@
+import { ClipboardList } from "lucide-react";
 import { buttonClasses } from "../../../utils/buttonStyles";
 import {
   businessTypeOptions,
@@ -16,7 +17,10 @@ export function QualifyingStep({ formData, onChange, onNext }: QualifyingStepPro
 
   return (
     <div className="rounded-2xl border border-charcoal/8 bg-white p-8 shadow-soft sm:p-10">
-      <h2 className="font-display text-2xl font-black text-charcoal sm:text-3xl">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange/10 text-orange">
+        <ClipboardList className="h-6 w-6" aria-hidden="true" />
+      </div>
+      <h2 className="mt-4 font-display text-2xl font-black text-charcoal sm:text-3xl">
         Let's Learn More About Your Business
       </h2>
       <p className="mt-2 font-body text-sm text-charcoal/60">
@@ -30,23 +34,41 @@ export function QualifyingStep({ formData, onChange, onNext }: QualifyingStepPro
           </span>
           What best describes you?
         </legend>
-        <div className="mt-4 flex flex-col gap-3 pl-9">
-          {businessTypeOptions.map((option) => (
-            <label
-              key={option.value}
-              className="flex items-center gap-3 font-body text-sm text-charcoal/80"
-            >
-              <input
-                type="radio"
-                name="businessType"
-                value={option.value}
-                checked={formData.businessType === option.value}
-                onChange={() => onChange("businessType", option.value)}
-                className="h-4 w-4 accent-orange"
-              />
-              {option.label}
-            </label>
-          ))}
+        <div className="mt-4 flex flex-col gap-2 pl-9">
+          {businessTypeOptions.map((option) => {
+            const isChecked = formData.businessType === option.value;
+            return (
+              <label
+                key={option.value}
+                className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 font-body text-sm text-charcoal/80 transition-colors ${
+                  isChecked
+                    ? "border-orange bg-orange/5"
+                    : "border-charcoal/10 hover:border-orange/40"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="businessType"
+                  value={option.value}
+                  checked={isChecked}
+                  onChange={() => onChange("businessType", option.value)}
+                  className="sr-only"
+                />
+                <span
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
+                    isChecked ? "border-orange" : "border-charcoal/20"
+                  }`}
+                >
+                  <span
+                    className={`h-2.5 w-2.5 rounded-full bg-orange transition-transform ${
+                      isChecked ? "scale-100" : "scale-0"
+                    }`}
+                  />
+                </span>
+                {option.label}
+              </label>
+            );
+          })}
         </div>
       </fieldset>
 
@@ -80,9 +102,9 @@ export function QualifyingStep({ formData, onChange, onNext }: QualifyingStepPro
         type="button"
         onClick={onNext}
         disabled={!canAdvance}
-        className={`mt-10 w-full ${buttonClasses("primary", "md")} disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0`}
+        className={`mt-10 w-full ${buttonClasses("secondary", "md")} disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0`}
       >
-        Next: Tell Us About Yourself
+        Next: Tell Us About Yourself &rarr;
       </button>
     </div>
   );

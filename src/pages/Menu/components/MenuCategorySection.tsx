@@ -44,7 +44,7 @@ export function MenuCategorySection({ category, isFirst, sectionIndex }: MenuCat
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="mt-6 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4"
+          className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 lg:grid-cols-4"
         >
           {category.items.map((item) => (
             <motion.div
@@ -53,7 +53,7 @@ export function MenuCategorySection({ category, isFirst, sectionIndex }: MenuCat
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="group overflow-hidden rounded-lg border border-charcoal/10 bg-[#FBF1DC]"
             >
-              <div className="h-32 w-full overflow-hidden sm:h-40">
+              <div className="h-32 w-full overflow-hidden sm:min-h-60">
                 <img
                   src={item.image}
                   alt={item.alt}

@@ -1,29 +1,44 @@
 import { motion } from "framer-motion";
+import {
+  CheckCircle2,
+  FileText,
+  Handshake,
+  Mail,
+  Phone,
+  UserCheck,
+  type LucideIcon,
+} from "lucide-react";
 import { fadeUp } from "../../../utils/motion";
 
-const nextSteps = [
+interface NextStep {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+}
+
+const nextSteps: NextStep[] = [
   {
-    icon: "✉️",
+    icon: Mail,
     title: "We Receive Your Information",
     body: "Your responses help us understand your business and goals.",
   },
   {
-    icon: "👤",
+    icon: UserCheck,
     title: "Our Team Reviews Your Details",
     body: "We'll match you with the right team member.",
   },
   {
-    icon: "📞",
+    icon: Phone,
     title: "Personal Follow-Up",
     body: "We'll contact you within 1 business day to start the conversation.",
   },
   {
-    icon: "📄",
+    icon: FileText,
     title: "Customized Information",
     body: "Receive the information that's most relevant to your opportunity.",
   },
   {
-    icon: "🤝",
+    icon: Handshake,
     title: "Let's Build Your Future Together",
     body: "We're here to help you grow with One More Slice.",
   },
@@ -38,8 +53,8 @@ export function ThankYou() {
         variants={fadeUp}
         transition={{ duration: 0.5 }}
       >
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-orange text-3xl text-orange">
-          ✓
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-orange text-white">
+          <CheckCircle2 className="h-8 w-8" aria-hidden="true" />
         </div>
         <h2 className="mt-6 font-display text-2xl font-black uppercase text-charcoal sm:text-3xl">
           Thank You!
@@ -53,28 +68,23 @@ export function ThankYou() {
         </p>
       </motion.div>
 
-      <div className="mt-12 grid gap-8 text-left sm:grid-cols-2 sm:gap-4 sm:text-center md:grid-cols-3 lg:grid-cols-5">
-        {nextSteps.map((step, index) => (
-          <div key={step.title} className="flex flex-col items-center gap-3">
-            <span className="text-3xl" aria-hidden="true">
-              {step.icon}
-            </span>
-            <p className="font-display text-sm font-bold uppercase tracking-wide text-charcoal">
-              {step.title}
-            </p>
-            <p className="font-body text-sm leading-relaxed text-muted">
-              {step.body}
-            </p>
-            {index < nextSteps.length - 1 && (
-              <span
-                className="hidden text-orange lg:block"
-                aria-hidden="true"
-              >
-                →
-              </span>
-            )}
-          </div>
-        ))}
+      <div className="mt-12 grid gap-8 text-left sm:grid-cols-2 sm:gap-6 sm:text-center md:grid-cols-3 lg:grid-cols-5">
+        {nextSteps.map((step) => {
+          const Icon = step.icon;
+          return (
+            <div key={step.title} className="flex flex-col items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange/10 text-orange">
+                <Icon className="h-6 w-6" aria-hidden="true" />
+              </div>
+              <p className="font-display text-sm font-bold uppercase tracking-wide text-charcoal">
+                {step.title}
+              </p>
+              <p className="font-body text-sm leading-relaxed text-muted">
+                {step.body}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

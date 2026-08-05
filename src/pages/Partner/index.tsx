@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 import { useScrollToHash } from "../../hooks/useScrollToHash";
-import { PartnerHero, PartnerOptions, PartnerProcess, PartnerForm } from "./components";
+import {
+  PartnerHero,
+  StatsBar,
+  PartnerOptions,
+  PartnerProcess,
+  PartnerSupport,
+  PartnerForm,
+} from "./components";
 
 export function Partner() {
   useScrollToHash();
@@ -31,8 +38,10 @@ export function Partner() {
   return (
     <>
       <PartnerHero />
+      <StatsBar />
       <PartnerOptions />
       <PartnerProcess />
+      <PartnerSupport />
       <PartnerForm />
     </>
   );

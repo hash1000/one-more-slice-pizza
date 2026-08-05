@@ -13,7 +13,7 @@ export function MenuHero() {
           viewport={viewportOnce}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="relative inline-block font-display text-4xl font-black leading-tight tracking-tight text-charcoal">
+          <h1 className="relative inline-block font-display text-6xl font-black leading-tight tracking-tight text-charcoal">
             Our Menu
             <svg
               className="absolute -bottom-3 left-0 w-full text-orange"
@@ -26,8 +26,8 @@ export function MenuHero() {
             </svg>
           </h1>
           <p className="mt-4 font-body text-base">
-            <span className="text-charcoal">Fresh, oven-hot.</span>{" "}
-            <span className="text-orange">Made throughout the day.</span>
+            <span className="text-charcoal text-2xl font-extrabold">Fresh, oven-hot.</span>{" "}
+            <span className="text-orange text-2xl font-black">Made throughout the day.</span>
           </p>
         </motion.div>
       </div>

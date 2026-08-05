@@ -60,15 +60,15 @@ export function Hero() {
             <img
               src={heroBigSlice}
               alt="Our Promise Is Simple: Big Slice"
-              className="mx-auto w-full max-w-[39rem] lg:mx-0"
+              className="mx-auto w-full max-w-[44rem] lg:mx-0"
             />
 
-            <p className=" mt-4 max-w-[48ch] text-xl text-muted lg:mx-0">
+            <p className=" mt-4 max-w-[52ch] text-xl text-muted lg:mx-0">
               Fresh oven hot pizza in oversized slices.
-              <p className="max-w-[48ch] text-xl text-muted lg:mx-0">
+              <p className="max-w-[52ch] text-xl text-muted lg:mx-0">
                 Fifteen varieties, made throughout
               </p>
-              <p className="max-w-[48ch] text-xl text-muted lg:mx-0">
+              <p className="max-w-[52ch] text-xl text-muted lg:mx-0">
                 the day, everyday.
               </p>
             </p>
@@ -92,12 +92,12 @@ export function Hero() {
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative order-1 mx-auto flex w-full max-w-[28rem] items-center justify-center sm:max-w-[34rem] lg:order-2 lg:max-w-[46rem]"
+          className="relative order-1 mx-auto flex w-full max-w-[28rem] items-center justify-center sm:max-w-[34rem] lg:order-2 lg:max-w-[54rem]"
         >
           {/* Soft radial orange glow behind the pizza */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute h-56 w-56 rounded-full bg-orange/[0.07] blur-[70px] sm:h-80 sm:w-80 sm:blur-[100px] lg:h-[28rem] lg:w-[28rem] lg:blur-[120px]"
+            className="pointer-events-none absolute h-56 w-56 rounded-full bg-orange/[0.07] blur-[70px] sm:h-80 sm:w-80 sm:blur-[100px] lg:w-[44rem] lg:blur-[120px]"
           />
 
           <video

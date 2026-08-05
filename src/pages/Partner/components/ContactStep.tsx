@@ -1,3 +1,4 @@
+import { UserRound } from "lucide-react";
 import { buttonClasses } from "../../../utils/buttonStyles";
 import {
   emptyLocationEntry,
@@ -34,7 +35,10 @@ export function ContactStep({
 }: ContactStepProps) {
   return (
     <div className="rounded-2xl border border-charcoal/8 bg-white p-8 shadow-soft sm:p-10">
-      <h2 className="font-display text-2xl font-black text-charcoal sm:text-3xl">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange/10 text-orange">
+        <UserRound className="h-6 w-6" aria-hidden="true" />
+      </div>
+      <h2 className="mt-4 font-display text-2xl font-black text-charcoal sm:text-3xl">
         Tell Us About Yourself
       </h2>
 
