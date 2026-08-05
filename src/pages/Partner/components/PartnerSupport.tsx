@@ -73,7 +73,7 @@ export function PartnerSupport() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto mt-12 max-w-6xl rounded-2xl bg-orange p-6 sm:p-10"
         >
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {steps.map((step) => (
               <div
                 key={step.number}

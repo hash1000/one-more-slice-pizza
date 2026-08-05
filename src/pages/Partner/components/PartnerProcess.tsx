@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useId } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowDown,
@@ -86,6 +86,8 @@ function StepCard({ step }: { step: ProcessStep }) {
 }
 
 export function PartnerProcess() {
+  const arrowheadId = useId();
+
   return (
     <section className="bg-cream py-20 sm:py-28">
       <div className={containerClasses}>
@@ -126,23 +128,33 @@ export function PartnerProcess() {
               ))}
             </div>
 
-            <div className="relative mt-6">
-              <div className="grid grid-cols-4">
-                <div />
-                <div />
-                <div />
-                <div className="mx-auto h-8 w-px bg-charcoal/25" />
-              </div>
-              <div className="relative h-8">
-                <div className="absolute top-0 right-[12.5%] left-1/2 h-px bg-charcoal/25" />
-                <div className="absolute top-0 right-[12.5%] h-8 w-px bg-charcoal/25" />
-                <ArrowDown
-                  className="absolute top-5 left-1/2 -translate-x-1/2 text-charcoal/50"
-                  size={16}
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
+            {/* L-shaped connector: down from card 4, left, then down into card 5 */}
+            <svg
+              className="block h-22.5 w-full overflow-visible"
+              viewBox="0 0 1120 90"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <marker
+                  id={arrowheadId}
+                  markerWidth="8"
+                  markerHeight="6"
+                  refX="4"
+                  refY="3"
+                  orient="auto"
+                >
+                  <polygon points="0 0, 8 3, 0 6" className="fill-charcoal/40" />
+                </marker>
+              </defs>
+              <path
+                d="M 992 0 L 992 45 L 560 45 L 560 82"
+                className="stroke-charcoal/25"
+                strokeWidth="1.5"
+                fill="none"
+                markerEnd={`url(#${arrowheadId})`}
+              />
+            </svg>
 
             <motion.div
               initial="hidden"

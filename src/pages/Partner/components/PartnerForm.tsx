@@ -6,6 +6,7 @@ import { initialFormState, type ContactFormErrors, type PartnerFormState } from 
 import { QualifyingStep } from "./QualifyingStep";
 import { ContactStep } from "./ContactStep";
 import { ThankYou } from "./ThankYou";
+import aboutBusinessUnderline from "../../../assets/images/partner/about-business.svg";
 
 type Step = "qualifying" | "contact" | "submitted";
 
@@ -85,31 +86,24 @@ export function PartnerForm() {
     }
   };
 
-  const stepNumber = step === "qualifying" ? 1 : step === "contact" ? 2 : null;
-
   return (
     <section id="partner-form" className="bg-cream-soft py-20 sm:py-28">
       <div className={containerClasses}>
-        <div className="mx-auto max-w-2xl">
-          {stepNumber !== null && (
-            <div className="mb-6 flex items-center justify-center gap-3">
-              <span className="font-display text-xs font-bold uppercase tracking-widest text-charcoal/50">
-                Step {stepNumber} of 2
-              </span>
-              <div className="flex gap-1.5">
-                <span
-                  className={`h-1.5 w-8 rounded-full transition-colors ${
-                    stepNumber >= 1 ? "bg-orange" : "bg-charcoal/10"
-                  }`}
+              <div className="text-center">
+                <h2 className="font-display text-3xl font-black text-charcoal sm:text-5xl">
+                  Let's Learn More About Your Business
+                </h2>
+                <img
+                  src={aboutBusinessUnderline}
+                  alt=""
+                  aria-hidden="true"
+                  className="mx-auto mt-3"
                 />
-                <span
-                  className={`h-1.5 w-8 rounded-full transition-colors ${
-                    stepNumber >= 2 ? "bg-orange" : "bg-charcoal/10"
-                  }`}
-                />
+                <p className="mt-4 font-body text-base text-charcoal/60">
+                  This helps us provide you with the most relevant information.
+                </p>
               </div>
-            </div>
-          )}
+        <div className="mx-auto mt-12">
           <AnimatePresence mode="wait">
             {step === "qualifying" && (
               <motion.div

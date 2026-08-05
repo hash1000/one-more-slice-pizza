@@ -90,14 +90,14 @@ export function PartnerOptions() {
                 viewport={viewportOnce}
                 variants={fadeUp}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative flex scroll-mt-32 flex-col rounded-2xl p-8 sm:p-10 ${
+                className={`relative flex gap-4 scroll-mt-32 flex-col rounded-2xl p-8 sm:p-10 ${
                   option.dark
                     ? "bg-charcoal text-cream"
                     : "border border-orange/30 bg-white text-charcoal shadow-soft"
                 }`}
               >
                 <Icon
-                  className={`absolute top-8 right-8 h-12 w-12 ${
+                  className={`absolute top-8 right-8  h-8 w-8 md:h-12 md:w-12 ${
                     option.dark ? "text-orange" : "text-charcoal"
                   }`}
                   aria-hidden="true"
@@ -105,19 +105,19 @@ export function PartnerOptions() {
                 <span className="font-display text-lg font-bold text-orange">
                   {option.eyebrow}
                 </span>
-                <h3 className="mt-3 max-w-xs font-display text-2xl font-black leading-snug uppercase sm:text-3xl">
+                <h3 className="max-w-xs font-display text-xl font-black leading-snug uppercase sm:text-2xl">
                   {option.headingPrefix}{" "}
                   <span className="text-orange">{option.headingAccent}</span>{" "}
                   {option.headingSuffix}
                 </h3>
                 <p
-                  className={`mt-6 font-body text-base leading-relaxed ${
+                  className={`font-body text-base leading-relaxed ${
                     option.dark ? "text-cream/85" : "text-charcoal/70"
                   }`}
                 >
                   {option.body}
                 </p>
-                <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
+                <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
                   {option.idealFor.map((item) => (
                     <li
                       key={item}
@@ -135,7 +135,7 @@ export function PartnerOptions() {
                 </ul>
                 <a
                   href="#partner-form"
-                  className="mt-8 inline-flex w-fit items-center justify-center rounded-2xl bg-orange px-6 py-3 font-display text-sm font-bold uppercase tracking-wide text-cream transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105"
+                  className="mt-auto inline-flex w-fit items-center justify-center rounded-2xl bg-orange px-6 py-3 font-display text-sm font-bold uppercase tracking-wide text-cream transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105"
                 >
                   {option.cta}
                 </a>

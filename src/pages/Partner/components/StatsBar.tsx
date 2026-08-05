@@ -36,7 +36,7 @@ export function StatsBar() {
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.6 }}
-          className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 rounded-2xl bg-charcoal px-8 py-10 sm:px-12 lg:grid-cols-4 lg:gap-x-0 lg:gap-y-0 lg:py-8"
+          className="mx-auto grid  grid-cols-1 gap-x-6 gap-y-8 rounded-2xl bg-charcoal px-8 py-10 sm:px-12  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-0 lg:gap-y-0 lg:py-8"
         >
           {stats.map((stat, index) => (
             <div

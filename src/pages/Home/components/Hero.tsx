@@ -7,6 +7,12 @@ import { containerClasses } from "../../../utils/layout";
 import { buttonClasses } from "../../../utils/buttonStyles";
 import { fadeUp, viewportOnce } from "../../../utils/motion";
 
+const CDN_BASE =
+  "https://afc-spaces.sfo3.cdn.digitaloceanspaces.com/one-more-slice";
+const HERO_POSTER_URL = `${CDN_BASE}/hero-poster.jpg`;
+const HERO_VIDEO_MP4_URL = `${CDN_BASE}/hero-animation.mp4`;
+const HERO_VIDEO_WEBM_URL = `${CDN_BASE}/hero-animation.webm`;
+
 export function Hero() {
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -108,15 +114,15 @@ export function Hero() {
             loop
             playsInline
             preload="auto"
-            poster="/videos/hero-poster.jpg"
+            poster={HERO_POSTER_URL}
           >
             {/* mp4 first: Safari claims WebM support but decodes VP9 unreliably */}
             <source
-              src="/videos/hero-animation.mp4"
+              src={HERO_VIDEO_MP4_URL}
               type='video/mp4; codecs="avc1.42E01E"'
             />
             <source
-              src="/videos/hero-animation.webm"
+              src={HERO_VIDEO_WEBM_URL}
               type='video/webm; codecs="vp9"'
             />
           </video>
