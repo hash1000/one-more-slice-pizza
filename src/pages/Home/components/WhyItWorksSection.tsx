@@ -50,7 +50,7 @@ export function WhyItWorksSection() {
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="mt-3 text-center font-display text-4xl text-orange font-black leading-tight tracking-tight text-balance sm:text-5xl"
+          className="mt-3 text-center font-display text-xl md:text-4xl text-orange font-black leading-tight tracking-tight text-balance sm:text-5xl"
         >
           Quality Pizza. Simple Operation. Maximum Profit.
         </motion.h2>
@@ -60,7 +60,7 @@ export function WhyItWorksSection() {
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 rounded-3xl bg-charcoal md:grid-cols-2 md:gap-y-10 lg:grid-cols-5 px-16 py-9 mt-10 sm:mt-12 lg:mt-16"
+          className="grid grid-cols-1 gap-6 rounded-3xl bg-charcoal md:grid-cols-2 md:gap-y-10 lg:grid-cols-5 px-16 py-9 mt-10 sm:mt-12 lg:mt-16"
         >
           {features.map((feature, i) => (
             <div
@@ -77,7 +77,7 @@ export function WhyItWorksSection() {
                 aria-hidden="true"
                 className="h-14 w-14 shrink-0 object-contain sm:h-10 sm:w-10 text-orange"
               />
-              <p className="font-display text-2xl font-bold uppercase tracking-wide text-center text-white max-w-40">
+              <p className="font-display  text-xl md:text-2xl font-bold uppercase tracking-wide text-center text-white max-w-40">
                 {feature.label}
               </p>
             </div>

@@ -56,7 +56,7 @@ export function LocationsSection() {
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 lg:gap-8"
+          className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-4 lg:gap-8"
         >
           {locations.map((item) => (
             <motion.div

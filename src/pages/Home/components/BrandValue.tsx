@@ -104,7 +104,7 @@ export function BrandValue() {
             <p className="mt-3 font-body text-base leading-relaxed text-white/90">
               {differentiators[0].body}
             </p>
-            <div className="mt-6 flex items-center gap-4 sm:gap-6">
+            <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
               {differentiators[0].stats.map((stat) => (
                 <div
                   key={stat.label}

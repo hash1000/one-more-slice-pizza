@@ -59,7 +59,7 @@ export function OurStory() {
     >
       <section className="relative">
         <div
-          className={`${containerClasses} flex items-center gap-10  md:gap-12  lg:gap-8`}
+          className={`${containerClasses} flex flex-col lg:flex-row  items-center gap-10  md:gap-12  lg:gap-8`}
         >
           {/* Left: copy – 35% */}
           <motion.div
@@ -120,7 +120,7 @@ export function OurStory() {
             whileInView={{ opacity: 1, scale: 1.5, y: 0 }}
             viewport={viewportOnce}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="relative basis-[55%] mx-auto flex aspect-square w-full max-w-65 items-center justify-center sm:max-w-80 md:max-w-90 order-2 lg:max-w-90 xl:max-w-120 2xl:max-w-130"
+            className="relative basis-[55%] mt-28 lg:mt-0 mx-auto flex aspect-square w-full max-w-65 items-center justify-center sm:max-w-80 md:max-w-90 order-2 lg:max-w-90 xl:max-w-120 2xl:max-w-130"
           >
             {/* Ambient glow */}
             <motion.div

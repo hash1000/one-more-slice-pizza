@@ -51,7 +51,7 @@ export function MenuCategorySection({ category, isFirst, sectionIndex }: MenuCat
               key={item.name}
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="group overflow-hidden rounded-lg border border-charcoal/10 bg-[#FBF1DC]"
+              className="group overflow-hidden rounded-lg border border-charcoal/10"
             >
               <div className="h-32 w-full overflow-hidden sm:min-h-60">
                 <img
@@ -65,7 +65,7 @@ export function MenuCategorySection({ category, isFirst, sectionIndex }: MenuCat
                   draggable={false}
                 />
               </div>
-              <div className="px-4 py-3 sm:px-5 sm:py-4">
+              <div className="px-4 py-3 sm:px-5 sm:py-4  bg-[#FBF1DC]">
                 <p className="font-display text-sm font-bold text-orange sm:text-base">
                   {item.name}
                   {appendSlice ? " Slice" : ""}

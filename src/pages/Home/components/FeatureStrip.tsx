@@ -39,12 +39,12 @@ export function FeatureStrip() {
           viewport={viewportOnce}
           variants={fadeUp}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 rounded-3xl bg-charcoal md:grid-cols-2 md:gap-y-8 lg:grid-cols-4 px-16 py-9"
+          className="grid grid-cols-1 gap-10  md:gap-2 rounded-3xl bg-charcoal md:grid-cols-2 md:gap-y-8 lg:grid-cols-4 px-8 py-4 md:px-16 md:py-9"
         >
           {features.map((feature, i) => (
             <div
               key={feature.label}
-              className={`flex flex-col gap-2.5 px-10 ${
+              className={`flex flex-col gap-2.5 px-5 md:px-10 ${
                 i < features.length - 1
                   ? "border-r border-white lg:border-r"
                   : ""
@@ -54,7 +54,7 @@ export function FeatureStrip() {
                 src={feature.icon}
                 alt=""
                 aria-hidden="true"
-                className="h-14 w-14 shrink-0 object-contain sm:h-10 sm:w-10"
+                className=" h-8 w-8 md:h-14 md:w-14 shrink-0 object-contain sm:h-10 sm:w-10"
               />
               <p className="font-display text-2xl font-bold uppercase tracking-wide text-orange">
                 {feature.label}
