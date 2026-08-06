@@ -1,18 +1,19 @@
 import { motion } from "framer-motion";
-import {
-  Zap,
-  Wrench,
-  Shrink,
-  Megaphone,
-  TrendingUp,
-  type LucideIcon,
-} from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "../../../utils/motion";
 import { containerClasses } from "../../../utils/layout";
-import signaturePizza from "../../../assets/images/menu/signature/pepperoni.webp";
-import breakfastPizza from "../../../assets/images/menu/breakfast/egg-bacon-cheese.webp";
-import sweetSlice from "../../../assets/images/menu/sweet-slices/chocolate-bliss.webp";
-import snackItem from "../../../assets/images/menu/snacks/garlic-sticks.webp";
+
+// menu images
+import signaturePizza from "../../../assets/images/partner/signature-pizza.jpg";
+import sweetSlices from "../../../assets/images/partner/sweet-slices.jpg";
+import wholePizza from "../../../assets/images/partner/whole-pizza.jpg";
+import breakfast from "../../../assets/images/partner/breakfast-pizza.jpg";
+
+// operator icons
+import executionIcon from "../../../assets/images/partner/execution.svg";
+import equipmentIcon from "../../../assets/images/partner/equipment.png";
+import footprintIcon from "../../../assets/images/partner/footprint.svg";
+import marketingIcon from "../../../assets/images/partner/marketing.svg";
+import oppurtunityIcon from "../../../assets/images/partner/oppurtunity.svg";
 
 interface MenuItem {
   title: string;
@@ -23,55 +24,55 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     title: "Signature Pizzas",
-    body: "Whole-pizza and by-the-slice ordering built around fan-favorite flavors.",
+    body: "Familiar favorites and craveable specialty pizzas built for broad appeal.",
     image: signaturePizza,
   },
   {
     title: "Breakfast Pizzas",
-    body: "Start selling earlier with pizzas designed for the morning customer.",
-    image: breakfastPizza,
+    body: "A differentiated offering that extends the brand into the morning daypart.",
+    image: breakfast,
   },
   {
     title: "Sweet Slices",
-    body: "An easy incremental purchase that creates another occasion to buy.",
-    image: sweetSlice,
+    body: "An indulgent addition that creates snack, dessert and incremental purchase opportunities.",
+    image: sweetSlices,
   },
   {
-    title: "Snacks & Sides",
-    body: "Round out the order with high-margin, easy-to-execute add-ons.",
-    image: snackItem,
+    title: "Whole Pizzas",
+    body: "Expand beyond individual slices and capture family, group and take-home occasions.",
+    image: wholePizza,
   },
 ];
 
 interface OperatorFeature {
-  icon: LucideIcon;
+  icon: string;
   title: string;
   body: string;
 }
 
 const operatorFeatures: OperatorFeature[] = [
   {
-    icon: Zap,
+    icon: executionIcon,
     title: "Simple Execution",
     body: "A streamlined operating approach designed for repeatability and consistency.",
   },
   {
-    icon: Wrench,
+    icon: equipmentIcon,
     title: "Flexible Equipment Packages",
     body: "Equipment configurations can be matched to the format and expected sales volume.",
   },
   {
-    icon: Shrink,
+    icon: footprintIcon,
     title: "Efficient Footprint",
     body: "Formats designed to work within a variety of available spaces.",
   },
   {
-    icon: Megaphone,
+    icon: marketingIcon,
     title: "Brand & Marketing Support",
     body: "A complete branded identity and marketing platform designed to help operators launch and promote One More Slice.",
   },
   {
-    icon: TrendingUp,
+    icon: oppurtunityIcon,
     title: "Scalable Opportunity",
     body: "Start with the format that fits your business and build from there.",
   },
@@ -79,22 +80,24 @@ const operatorFeatures: OperatorFeature[] = [
 
 export function ProductFeatures() {
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="py-20 sm:py-28">
       <div className={containerClasses}>
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-10">
+          {/* Left: menu card */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
             variants={staggerContainer}
+            className="rounded-3xl border border-charcoal/10 bg-white p-8 shadow-sm sm:p-10"
           >
-            <motion.span
+            <motion.h2
               variants={fadeUp}
               transition={{ duration: 0.6 }}
-              className="font-display text-xs font-bold uppercase tracking-widest text-orange"
+              className="font-display text-2xl font-black uppercase leading-tight text-charcoal sm:text-3xl"
             >
               A Menu That Works Harder
-            </motion.span>
+            </motion.h2>
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.05 }}
@@ -104,26 +107,27 @@ export function ProductFeatures() {
               of day.
             </motion.p>
 
-            <div className="mt-8 flex flex-col gap-5">
+            <div className="mt-8 flex flex-col gap-6">
               {menuItems.map((item, index) => (
                 <motion.div
                   key={item.title}
                   variants={fadeUp}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className="flex items-center gap-4"
+                  className="flex flex-col md:flex-row items-center gap-5"
                 >
-                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl">
+                  <div className=" shrink-0 overflow-hidden ">
                     <img
                       src={item.image}
                       alt={item.title}
                       className="h-full w-full object-cover"
+                      loading="lazy"
                     />
                   </div>
-                  <div>
-                    <p className="font-display text-base font-bold uppercase text-charcoal">
+                  <div className="min-w-0">
+                    <p className="font-display text-base font-bold uppercase tracking-wide text-orange">
                       {item.title}
                     </p>
-                    <p className="mt-0.5 font-body text-sm leading-relaxed text-charcoal/70">
+                    <p className="mt-1 font-body text-sm leading-relaxed text-charcoal/70">
                       {item.body}
                     </p>
                   </div>
@@ -131,26 +135,32 @@ export function ProductFeatures() {
               ))}
             </div>
 
-            <motion.p
+            <motion.div
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-8 font-display text-lg font-black uppercase leading-snug text-charcoal"
+              className="mt-8 border-t border-charcoal/10 pt-6"
             >
-              The advantage isn't simply more menu.{" "}
-              <span className="text-orange">It's more reasons to buy.</span>
-            </motion.p>
+              <p className="font-display text-xs font-bold uppercase tracking-widest text-orange">
+                The advantage isn't simply more menu
+              </p>
+              <p className="mt-1 font-display text-xl font-black uppercase leading-snug text-charcoal">
+                It's more reasons to buy.
+              </p>
+            </motion.div>
           </motion.div>
 
+          {/* Right: operator features */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
             variants={staggerContainer}
+            className="lg:pl-4 lg:pt-2"
           >
             <motion.span
               variants={fadeUp}
               transition={{ duration: 0.6 }}
-              className="font-display text-xs font-bold uppercase tracking-widest text-orange"
+              className="font-display text-2xl font-black uppercase leading-tight text-orange sm:text-3xl"
             >
               Built With Operators in Mind
             </motion.span>
@@ -159,35 +169,44 @@ export function ProductFeatures() {
               transition={{ duration: 0.6, delay: 0.05 }}
               className="mt-3 font-body text-base leading-relaxed text-charcoal/70"
             >
-              A great food concept still has to work behind the counter. One
-              More Slice has been developed around practical restaurant and
+              A great food concept still has to work behind the counter.
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.08 }}
+              className="mt-2 font-body text-base leading-relaxed text-charcoal/70"
+            >
+              <span className="font-bold text-charcoal">One More Slice</span>{" "}
+              has been developed around practical restaurant and
               nontraditional foodservice environments with a focus on:
             </motion.p>
 
-            <div className="mt-8 flex flex-col gap-6">
-              {operatorFeatures.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <motion.div
-                    key={feature.title}
-                    variants={fadeUp}
-                    transition={{ duration: 0.5, delay: index * 0.08 }}
-                    className="flex items-start gap-4"
-                  >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange/10">
-                      <Icon className="text-orange" size={20} aria-hidden="true" />
-                    </span>
-                    <div>
-                      <p className="font-display text-base font-bold text-charcoal">
-                        {feature.title}
-                      </p>
-                      <p className="mt-0.5 font-body text-sm leading-relaxed text-charcoal/70">
-                        {feature.body}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
+            <div className="mt-9 flex flex-col gap-7">
+              {operatorFeatures.map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  variants={fadeUp}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="flex items-start gap-4"
+                >
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange/10">
+                    <img
+                      src={feature.icon}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-6 w-6 object-contain"
+                    />
+                  </span>
+                  <div>
+                    <p className="font-display text-base font-bold uppercase tracking-wide text-orange">
+                      {feature.title}
+                    </p>
+                    <p className="mt-1 font-body text-sm leading-relaxed text-charcoal/70">
+                      {feature.body}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

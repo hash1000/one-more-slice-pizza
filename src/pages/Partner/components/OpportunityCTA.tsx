@@ -11,31 +11,31 @@ export function OpportunityCTA() {
           whileInView="visible"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-4xl text-center"
         >
           <motion.h2
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="font-display text-3xl font-black uppercase leading-tight text-charcoal sm:text-4xl"
+            className="font-display text-3xl font-black uppercase leading-tight text-charcoal sm:text-4xl lg:text-5xl"
           >
-            Your Next Opportunity Could Start With One More Slice.
+            Your Next Opportunity Could Start
+            <br />
+            With <span className="text-orange">One More Slice</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 font-body text-base leading-relaxed text-charcoal/70 sm:text-lg"
+            className="mx-auto mt-6 max-w-2xl font-body text-base leading-relaxed text-charcoal/70 sm:text-lg"
           >
             If you're looking for a food concept with broad consumer appeal,
             multiple dayparts and the flexibility to fit different operating
             environments, we'd like to hear from you.
           </motion.p>
-          <motion.p
+          <motion.div
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-8 font-display text-2xl font-black uppercase leading-tight text-orange sm:text-3xl"
-          >
-            Let's Build Something Profitable
-          </motion.p>
+            className="mx-auto mt-12 max-w-3xl border-t border-charcoal/15"
+          />
         </motion.div>
       </div>
     </section>

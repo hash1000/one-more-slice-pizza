@@ -6,7 +6,6 @@ import { initialFormState, type ContactFormErrors, type PartnerFormState } from 
 import { QualifyingStep } from "./QualifyingStep";
 import { ContactStep } from "./ContactStep";
 import { ThankYou } from "./ThankYou";
-import aboutBusinessUnderline from "../../../assets/images/partner/about-business.svg";
 
 type Step = "qualifying" | "contact" | "submitted";
 
@@ -90,18 +89,12 @@ export function PartnerForm() {
     <section id="partner-form" className="bg-cream-soft py-20 sm:py-28">
       <div className={containerClasses}>
               <div className="text-center">
-                <h2 className="font-display text-3xl font-black text-charcoal sm:text-5xl">
-                  Let's Learn More About Your Business
-                </h2>
-                <img
-                  src={aboutBusinessUnderline}
-                  alt=""
-                  aria-hidden="true"
-                  className="mx-auto mt-3"
-                />
-                <p className="mt-4 font-body text-base text-charcoal/60">
-                  This helps us provide you with the most relevant information.
+                <p className="font-body text-base text-charcoal/60">
+                  Tell us about yourself, your market and the type of opportunity you're interested in
                 </p>
+                <h2 className="mt-2 font-display text-3xl font-black uppercase text-charcoal sm:text-5xl">
+                  Let's Build Something Profitable
+                </h2>
               </div>
         <div className="mx-auto mt-12">
           <AnimatePresence mode="wait">

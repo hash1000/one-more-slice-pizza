@@ -15,26 +15,22 @@ export function QualifyingStep({ formData, onChange, onNext }: QualifyingStepPro
   const canAdvance = formData.businessType !== "";
 
   return (
-    <div className="rounded-3xl border border-charcoal/5 bg-white p-8 shadow-xl shadow-charcoal/5 sm:p-12">
+    <div className="rounded-2xl bg-white p-8 sm:p-12">
       <div className="grid gap-10 sm:grid-cols-2 sm:gap-12">
         <fieldset>
           <legend className="flex items-center gap-3 font-display text-base font-bold text-charcoal">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange text-sm font-bold text-white shadow-sm shadow-orange/30">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange text-base font-bold text-white">
               1
             </span>
             What best describes you?
           </legend>
-          <div className="mt-5 flex flex-col gap-2.5">
+          <div className="mt-5 flex flex-col gap-3.5">
             {businessTypeOptions.map((option) => {
               const isChecked = formData.businessType === option.value;
               return (
                 <label
                   key={option.value}
-                  className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3.5 font-body text-sm text-charcoal/80 transition-all duration-150 ${
-                    isChecked
-                      ? "border-orange bg-orange/5 shadow-sm"
-                      : "border-charcoal/10 hover:border-orange/40 hover:bg-orange/3"
-                  }`}
+                  className="flex cursor-pointer items-center gap-3 font-body text-sm text-charcoal/80"
                 >
                   <input
                     type="radio"
@@ -46,7 +42,7 @@ export function QualifyingStep({ formData, onChange, onNext }: QualifyingStepPro
                   />
                   <span
                     className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
-                      isChecked ? "border-orange" : "border-charcoal/20"
+                      isChecked ? "border-orange" : "border-charcoal/30"
                     }`}
                   >
                     <span
@@ -55,7 +51,7 @@ export function QualifyingStep({ formData, onChange, onNext }: QualifyingStepPro
                       }`}
                     />
                   </span>
-                  <span className={isChecked ? "font-medium text-charcoal" : ""}>{option.label}</span>
+                  <span>{option.label}</span>
                 </label>
               );
             })}
@@ -67,7 +63,7 @@ export function QualifyingStep({ formData, onChange, onNext }: QualifyingStepPro
             htmlFor="locationsCount"
             className="flex items-start gap-3 font-display text-base font-bold text-charcoal"
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange text-sm font-bold text-white shadow-sm shadow-orange/30">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange text-base font-bold text-white">
               2
             </span>
             <span>Approximately how many locations do you currently operate?</span>
