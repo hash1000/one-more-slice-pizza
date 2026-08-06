@@ -1,6 +1,9 @@
 export { PartnerHero } from "./PartnerHero";
-export { StatsBar } from "./StatsBar";
+export { WhyOMS } from "./WhyOMS";
+export { BigSlicesFeature } from "./BigSlicesFeature";
 export { PartnerOptions } from "./PartnerOptions";
-export { PartnerProcess } from "./PartnerProcess";
-export { PartnerSupport } from "./PartnerSupport";
+export { LocationFit } from "./LocationFit";
+export { ProductFeatures } from "./ProductFeatures";
+export { PartnerType } from "./PartnerType";
+export { OpportunityCTA } from "./OpportunityCTA";
 export { PartnerForm } from "./PartnerForm";
